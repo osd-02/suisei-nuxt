@@ -39,6 +39,23 @@ export default {
   modules: [
   ],
 
+  vuetify: {
+    theme: {
+      light: true,
+      themes: {
+        light: {
+          main: "#93a9d1",
+          sub: "#9395d1",
+          primary: "#facf7d",
+          secondary: "#ccc8bf",
+          accent: "#bdd3e2",
+          warning: "#aa9e32",
+          success: "#0f4c81"
+        }
+      }
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
