@@ -12,11 +12,15 @@
       <v-list id="d-wrapper">
         <v-list-item v-for="drawerItem in drawerItems" :key="drawerItem.id">
           <v-list-item-icon class="icon-wrapper">
-            <img class="icon" :src="drawerItem.img" />
+            <a :href="drawerItem.link">
+              <img class="icon" :src="drawerItem.img" />
+            </a>
           </v-list-item-icon>
-          <v-list-item-title class="primary--text">
-            {{ drawerItem.title }}
-          </v-list-item-title>
+          <a :href="drawerItem.link">
+            <v-list-item-title class="primary--text">
+              {{ drawerItem.title }}
+            </v-list-item-title>
+          </a>
         </v-list-item>
       </v-list>
 
@@ -40,11 +44,31 @@ export default {
   data() {
     return {
       drawerItems: [
-        { title: 'Home', id: 1, img: require('../static/mars.png') },
-        { title: 'Profile', id: 2, img: require('../static/moon.png') },
-        { title: 'Live', id: 3, img: require('../static/mercury.png') },
-        { title: 'Discography', id: 4, img: require('../static/earth.png') },
-        { title: 'News', id: 5, img: require('../static/saturn.png') },
+        { title: 'Home', id: 1, img: require('../static/mars.png'), link: '/' },
+        {
+          title: 'Profile',
+          id: 2,
+          img: require('../static/moon.png'),
+          link: '/',
+        },
+        {
+          title: 'Live',
+          id: 3,
+          img: require('../static/mercury.png'),
+          link: '/',
+        },
+        {
+          title: 'Discography',
+          id: 4,
+          img: require('../static/earth.png'),
+          link: '/',
+        },
+        {
+          title: 'News',
+          id: 5,
+          img: require('../static/saturn.png'),
+          link: '/',
+        },
       ],
     }
   },
