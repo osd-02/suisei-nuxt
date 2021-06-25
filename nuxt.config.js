@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -20,7 +22,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/flamelink'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -33,7 +35,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/dotenv"],
 
   vuetify: {
     theme: {
@@ -53,5 +55,13 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend: function(config, { isDev, isClient }) {
+      config.node = {
+        fs: "empty"
+      };
+    }
+  },
+
+  plugins: ["@/plugins/flamelink"]
 }

@@ -21,3 +21,21 @@ export default {
   }
 }
 </style>
+
+<script>
+export default {
+  async asyncData({ app }) {
+    try {
+      const data = await app.flamelink.content.get({
+        schemaKey: 'live', 
+        populate: true,
+      })
+      console.log({ data })
+      return { data }
+    } catch (err) {
+      console.log(err)
+      return { data: [] }
+    }
+  },
+}
+</script>
