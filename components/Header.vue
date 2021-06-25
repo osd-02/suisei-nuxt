@@ -7,7 +7,9 @@
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <div id="logo-wrapper">
-        <img id="home-logo" src="../assets/img/home-logo.gif" />
+        <a href="/">
+          <img id="home-logo" src="../assets/img/home-logo.gif" />
+        </a>
       </div>
     </div>
   </div>
