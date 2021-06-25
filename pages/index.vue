@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <v-sheet color="main">
-      <Header />
       <div></div>
     </v-sheet>
   </div>

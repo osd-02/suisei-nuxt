@@ -2,9 +2,11 @@
   <div>
     <v-app>
       <v-main>
+        <Header />
         <v-sheet color="main">
           <Nuxt />
         </v-sheet>
+        <Footer />
       </v-main>
     </v-app>
   </div>

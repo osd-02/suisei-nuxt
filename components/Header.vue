@@ -1,7 +1,7 @@
 <template>
   <div>
     <Drawer v-model="drawer" />
-    <div id="home-logo-wrapper">
+    <v-sheet color="main" id="home-logo-wrapper">
       <v-app-bar-nav-icon
         id="drawer-icon"
         @click.stop="drawer = !drawer"
@@ -11,7 +11,7 @@
           <img id="home-logo" src="../assets/img/home-logo.gif" />
         </a>
       </div>
-    </div>
+    </v-sheet>
   </div>
 </template>
 
