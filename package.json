@@ -9,8 +9,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/vuetify": "^1.12.1",
     "core-js": "^3.9.1",
+    "dotenv": "^10.0.0",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.10.0",
+    "flamelink": "^1.0.0-alpha.34",
+    "fs": "^0.0.1-security",
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
