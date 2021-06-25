@@ -34,6 +34,7 @@ export default {
 #home-logo-wrapper {
   height: 56px;
   width: 100%;
+  padding-top: 10px;
   #drawer-icon {
     margin: 10px 0;
     position: fixed;
