@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Drawer v-model="drawer"/>
     <div id="home-logo-wrapper">
       <v-app-bar-nav-icon
         id="drawer-icon"
@@ -58,10 +59,9 @@ export default {
   position: fixed;
   display: flex;
   height: 56px;
+  width: 100%;
   #drawer-icon {
     margin: 10px 0;
-    .v-icon {
-    }
   }
   #home-logo {
     padding: 13px 0;
