@@ -4,32 +4,9 @@
       <img id="home-logo" src="../assets/img/home.png" />
     </div>
     <v-sheet color="main">
-      <v-card
-        v-for="live in liveData"
-        v-bind:key="live.index"
-        color="sub"
-        class="card"
-      >
-        <div class="data-wrapper text-body1">
-          <v-card-title class="live-title" v-html="live.title" />
-          <div class="img-wrapper">
-            <img :src="live.img[0].image[0].url" />
-          </div>
-          <v-card-text>
-            {{ live.postDate }}
-            {{ live.postTime }}
-            {{ live.place }}
-            {{ live.act }}
-            {{ live.liveDate }}
-            {{ live.liveTimeOpen }}
-            {{ live.liveTimeStart }}
-            {{ live.feeAdv }}
-            {{ live.feeDoor }}
-          </v-card-text>
-          <v-card-text v-html="`${live.body}`" />
-        </div>
-      </v-card>
+      <Live :data="this.liveData" id="live-location" />
     </v-sheet>
+    <div id="footer-space" />
   </div>
 </template>
 
@@ -48,11 +25,8 @@
       height: 30px;
     }
   }
-  .card {
-    margin: 20px 0;
-    // .data-wrapper {
-
-    // }
+  #footer-space {
+    height: 40px;
   }
 }
 </style>
