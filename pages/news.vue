@@ -1,11 +1,9 @@
 <template>
   <div class="container">
     <div id="logo-wrapper">
-      <img id="home-logo" src="../assets/img/home.png" />
+      <img id="home-logo" src="../assets/img/news.png" />
     </div>
     <v-sheet color="main">
-      <Live :data="this.liveData" id="live-location" />
-      <Discog :data="this.discogData" id="discog-location" />
       <News :data="this.newsData" id="news-location" />
     </v-sheet>
     <div id="footer-space" />
@@ -67,10 +65,7 @@ export default {
         populate: true,
       })
 
-      console.log({ liveData, newsData, discogData })
-      formatLiveDate(liveData, '/')
-      formatReleaseDate(discogData, '/')
-      return { liveData, newsData, discogData }
+      return { newsData }
     } catch (err) {
       console.log(err)
       return { data: [] }

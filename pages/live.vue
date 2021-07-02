@@ -1,12 +1,10 @@
 <template>
   <div class="container">
     <div id="logo-wrapper">
-      <img id="home-logo" src="../assets/img/home.png" />
+      <img id="home-logo" src="../assets/img/live.png" />
     </div>
     <v-sheet color="main">
       <Live :data="this.liveData" id="live-location" />
-      <Discog :data="this.discogData" id="discog-location" />
-      <News :data="this.newsData" id="news-location" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -58,19 +56,10 @@ export default {
         schemaKey: 'live',
         populate: true,
       })
-      const newsData = await app.flamelink.content.get({
-        schemaKey: 'news',
-        populate: true,
-      })
-      const discogData = await app.flamelink.content.get({
-        schemaKey: 'discog',
-        populate: true,
-      })
 
-      console.log({ liveData, newsData, discogData })
+      console.log({ liveData })
       formatLiveDate(liveData, '/')
-      formatReleaseDate(discogData, '/')
-      return { liveData, newsData, discogData }
+      return { liveData }
     } catch (err) {
       console.log(err)
       return { data: [] }
