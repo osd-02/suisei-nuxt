@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div id="logo-wrapper">
-      <img id="home-logo" src="../assets/img/discography.png" />
+      <img id="home-logo" src="../assets/img/profile.png" />
     </div>
     <v-sheet color="main">
-      <Discog :data="this.discogData" id="discog-location" />
+      <!-- <img :src="profileData.img.image.url" /> -->
+      <div class="body" v-html="`${profileData.body}`" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -28,6 +29,9 @@
       height: 30px;
     }
   }
+  .body {
+    text-align: center;
+  }
   #footer-space {
     height: 40px;
   }
@@ -35,29 +39,16 @@
 </style>
 
 <script lang="js">
-
-  function formatReleaseDate (object, after) {
-    for (const property in object) {
-          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
-  function formatPostDate (object, after) {
-    for (const property in object) {
-          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
-
 export default {
   async asyncData({ app }) {
     try {
-      const discogData = await app.flamelink.content.get({
-        schemaKey: 'discog',
+      const profileData = await app.flamelink.content.get({
+        schemaKey: 'profile',
         populate: true,
       })
 
-      formatReleaseDate(discogData, '/')
-      formatPostDate(discogData, '/')
-      return { discogData }
+    console.log(profileData.img.image)
+      return { profileData }
     } catch (err) {
       console.log(err)
       return { data: [] }

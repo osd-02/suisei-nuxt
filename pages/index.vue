@@ -17,6 +17,9 @@
   min-height: 100vh;
   width: 90%;
   max-width: 600px;
+  padding: 12px;
+  margin-right: auto;
+  margin-left: auto;
   #logo-wrapper {
     display: flex;
     flex-direction: column;
@@ -45,9 +48,9 @@
           object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
         }
   }
-  function formatPostTime (object, after) {
+  function formatPostDate (object, after) {
     for (const property in object) {
-          object[property].date = object[property].date.slice(0, -6).replace(/-/g, after)
+          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
         }
   }
 
