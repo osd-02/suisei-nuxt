@@ -5,6 +5,8 @@
     </div>
     <v-sheet color="main">
       <Live :data="this.liveData" id="live-location" />
+      <Discog :data="this.discogData" id="discog-location" />
+      <News :data="this.newsData" id="news-location" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -13,7 +15,7 @@
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  width:90%;
+  width: 90%;
   max-width: 600px;
   #logo-wrapper {
     display: flex;
@@ -31,7 +33,24 @@
 }
 </style>
 
-<script>
+<script lang="js">
+
+  function formatLiveDate (object, after) {
+    for (const property in object) {
+          object[property].liveDate = object[property].liveDate.slice(0, -15).replace(/-/g, after)
+        }
+  }
+  function formatReleaseDate (object, after) {
+    for (const property in object) {
+          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
+        }
+  }
+  function formatPostTime (object, after) {
+    for (const property in object) {
+          object[property].date = object[property].date.slice(0, -6).replace(/-/g, after)
+        }
+  }
+
 export default {
   async asyncData({ app }) {
     try {
@@ -47,7 +66,10 @@ export default {
         schemaKey: 'discog',
         populate: true,
       })
+
       console.log({ liveData, newsData, discogData })
+      formatLiveDate(liveData, '/')
+      formatReleaseDate(discogData, '/')
       return { liveData, newsData, discogData }
     } catch (err) {
       console.log(err)
