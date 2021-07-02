@@ -15,6 +15,9 @@
   min-height: 100vh;
   width: 90%;
   max-width: 600px;
+  padding: 12px;
+  margin-right: auto;
+  margin-left: auto;
   #logo-wrapper {
     display: flex;
     flex-direction: column;
@@ -32,20 +35,9 @@
 </style>
 
 <script lang="js">
-
-  function formatLiveDate (object, after) {
+  function formatPostDate (object, after) {
     for (const property in object) {
-          object[property].liveDate = object[property].liveDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
-  function formatReleaseDate (object, after) {
-    for (const property in object) {
-          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
-  function formatPostTime (object, after) {
-    for (const property in object) {
-          object[property].date = object[property].date.slice(0, -6).replace(/-/g, after)
+          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
         }
   }
 
@@ -65,6 +57,7 @@ export default {
         populate: true,
       })
 
+    formatPostDate (newsData, '/')
       return { newsData }
     } catch (err) {
       console.log(err)
