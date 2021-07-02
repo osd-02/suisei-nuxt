@@ -28,8 +28,11 @@
         <v-card-text>
           リリース日 : {{ discog.releaseDate }}
         </v-card-text>
-        <v-card-text>
+        <v-card-text v-if="discog.price">
           価格 : ￥{{ discog.price }}
+        </v-card-text>
+        <v-card-text v-else>
+          配信リリースのみ
         </v-card-text>
         <v-card-text v-html="`${discog.body}`" />
       </div>
