@@ -13,7 +13,7 @@
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  width: 80%;
+  width:90%;
   max-width: 600px;
   #logo-wrapper {
     display: flex;
@@ -35,12 +35,10 @@
 export default {
   async asyncData({ app }) {
     try {
-      console.log('aaa')
       const liveData = await app.flamelink.content.get({
         schemaKey: 'live',
         populate: true,
       })
-      console.log('bbb')
       const newsData = await app.flamelink.content.get({
         schemaKey: 'news',
         populate: true,

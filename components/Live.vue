@@ -5,9 +5,12 @@
       v-bind:key="live.index"
       color="sub"
       class="card"
+      outlined
     >
-      <div class="data-wrapper text-body1">
-        <v-card-title class="live-title" v-html="live.title" />
+      <div class="data-wrapper">
+        <v-sheet class="data-title-wrapper" color="success">
+          <v-card-title class="live-title white--text" v-html="live.title" />
+        </v-sheet>
         <div
           class="img-wrapper"
           if="live.img"
@@ -50,7 +53,11 @@ export default {
 <style lang="scss" scoped>
 .card {
   margin: 20px 0;
+  border-radius: 16px;
   .data-wrapper {
+      .data-title-wrapper {
+          border-radius: 16px 16px 0 0;
+      }
     .img-wrapper {
       padding: 16px;
       img {

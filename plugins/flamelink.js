@@ -13,7 +13,8 @@ export default ({ app }) => {
 
   if (process.server) {
     const admin = require("firebase-admin");
-
+    console.log(firebase.apps);
+    console.log(admin.credential);
     if (!admin.apps.length) {
       firebaseApp = admin.initializeApp({
         credential: admin.credential.cert({
@@ -27,10 +28,12 @@ export default ({ app }) => {
       });
     } else {
       firebaseApp = admin.app();
+      console.log(firebaseApp)
     }
   } else {
     require("firebase/auth");
     require("firebase/firestore");
+    
 
     if (!firebase.apps.length) {
       firebaseApp = firebase.initializeApp({
