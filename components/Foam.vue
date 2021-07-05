@@ -7,76 +7,77 @@
       class="p-contact__form"
       name="contact"
       method="POST"
-      data-netlify="true"
       data-netlify-honeypot="bot-field"
       @submit.prevent="onSubmit"
       :class="sendingClass"
     >
-      <input type="hidden" name="form-name" value="contact" />
-      <b>取り置きフォーム</b>
-      <div class="ticket-body">
-        <div class="p-contact__item">
-          <label for="name">取り置き名（カタカナ）: </label>
-          <validation-provider
-            v-slot="{ errors }"
-            rules="required|katakana"
-            name="取り置き名"
-          >
-            <input type="text" id="name" name="name" v-model="name" />
-            <p v-show="errors.length" class="p-contact__error">
-              {{ errors[0] }}
-            </p>
-          </validation-provider>
-        </div>
-        <!-- /.p-contact__item -->
+      <form netlify>
+        <input type="hidden" name="form-name" value="contact" />
+        <b>取り置きフォーム</b>
+        <div class="ticket-body">
+          <div class="p-contact__item">
+            <label for="name">取り置き名（カタカナ）: </label>
+            <validation-provider
+              v-slot="{ errors }"
+              rules="required|katakana"
+              name="取り置き名"
+            >
+              <v-text-field type="text" id="name" name="name" v-model="name" />
+              <p v-show="errors.length" class="p-contact__error">
+                {{ errors[0] }}
+              </p>
+            </validation-provider>
+          </div>
+          <!-- /.p-contact__item -->
 
-        <div class="p-contact__item">
-          <label for="useremail">メールアドレス: </label>
-          <validation-provider
-            v-slot="{ errors }"
-            rules="required|email|max:256"
-            name="メールアドレス"
-          >
-            <input
-              type="text"
-              id="useremail"
-              name="useremail"
-              v-model="useremail"
-              autocomplete="email"
-            />
-            <p v-show="errors.length" class="p-contact__error">
-              {{ errors[0] }}
-            </p>
-          </validation-provider>
-        </div>
-        <!-- /.p-contact__item -->
+          <div class="p-contact__item">
+            <label for="useremail">メールアドレス: </label>
+            <validation-provider
+              v-slot="{ errors }"
+              rules="required|email|max:256"
+              name="メールアドレス"
+            >
+              <v-text-field
+                type="text"
+                id="useremail"
+                name="useremail"
+                v-model="useremail"
+                autocomplete="email"
+              />
+              <p v-show="errors.length" class="p-contact__error">
+                {{ errors[0] }}
+              </p>
+            </validation-provider>
+          </div>
+          <!-- /.p-contact__item -->
 
-        <div class="p-contact__item">
-          <label for="message">取り置き枚数 : </label>
-          <validation-provider
-            v-slot="{ errors }"
-            rules="required"
-            name="取り置き枚数"
-          >
-            <input type="number" id="ticket" name="ticket" v-model="ticket" />
-            <p v-show="errors.length" class="p-contact__error">
-              {{ errors[0] }}
-            </p>
-          </validation-provider>
-        </div>
-        <!-- /.p-contact__item -->
+          <div class="p-contact__item">
+            <label for="message">取り置き枚数 : </label>
+            <validation-provider
+              v-slot="{ errors }"
+              rules="required"
+              name="取り置き枚数"
+            >
+              <v-text-field type="number" id="ticket" name="ticket" v-model="ticket" />
+              <p v-show="errors.length" class="p-contact__error">
+                {{ errors[0] }}
+              </p>
+            </validation-provider>
+          </div>
+          <!-- /.p-contact__item -->
 
-        <div class="p-contact__item" v-show="false">
-          <label for="message">スパムでない場合は空欄</label>
-          <input type="text" name="bot-field" v-model="botField" />
+          <div class="p-contact__item" v-show="false">
+            <label for="message">スパムでない場合は空欄</label>
+            <v-text-field type="text" name="bot-field" v-model="botField" />
+          </div>
+          <!-- /.p-contact__item -->
         </div>
-        <!-- /.p-contact__item -->
-      </div>
-      <div class="p-contact__submit">
-        <v-btn color="success" type="submit" :disabled="invalid || !validated"
-          >送信</v-btn
-        >
-      </div>
+        <div class="p-contact__submit">
+          <v-btn color="success" type="submit" :disabled="invalid || !validated"
+            >送信</v-btn
+          >
+        </div>
+      </form>
       <!-- /.p-contact__submit -->
     </validation-observer>
     <!-- /.p-contact__form -->
