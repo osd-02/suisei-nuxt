@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config()
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -35,7 +35,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/dotenv"],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/axios'],
 
   vuetify: {
     theme: {
@@ -56,12 +56,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend: function(config, { isDev, isClient }) {
+    extend: function (config, { isDev, isClient }) {
       config.node = {
-        fs: "empty"
-      };
-    }
+        fs: 'empty',
+      }
+    },
+    transpile: ['vee-validate'],
   },
 
-  plugins: ["@/plugins/flamelink"]
+  plugins: ['@/plugins/flamelink', '@/plugins/vee-validate'],
 }
