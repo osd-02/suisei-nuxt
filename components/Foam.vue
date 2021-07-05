@@ -1,17 +1,16 @@
 <template>
   <v-sheet class="p-contact" color="main" elevation="2">
-    <validation-observer
-      ref="observer"
-      v-slot="{ invalid, validated }"
-      tag="form"
-      class="p-contact__form"
-      name="contact"
-      method="POST"
-      data-netlify-honeypot="bot-field"
-      @submit.prevent="onSubmit"
-      :class="sendingClass"
-    >
-      <form netlify>
+    <validation-observer ref="observer" v-slot="{ invalid, validated }">
+      <form
+        netlify
+        tag="form"
+        class="p-contact__form"
+        name="contact"
+        method="POST"
+        data-netlify-honeypot="bot-field"
+        @submit.prevent="onSubmit"
+        :class="sendingClass"
+      >
         <input type="hidden" name="form-name" value="contact" />
         <b>取り置きフォーム</b>
         <div class="ticket-body">
@@ -58,7 +57,12 @@
               rules="required"
               name="取り置き枚数"
             >
-              <v-text-field type="number" id="ticket" name="ticket" v-model="ticket" />
+              <v-text-field
+                type="number"
+                id="ticket"
+                name="ticket"
+                v-model="ticket"
+              />
               <p v-show="errors.length" class="p-contact__error">
                 {{ errors[0] }}
               </p>
