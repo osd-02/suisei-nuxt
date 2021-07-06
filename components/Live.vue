@@ -34,7 +34,7 @@
         <v-card-text v-else> ADV / DOOR : ￥{{ live.feeAdv }} / - </v-card-text>
         <v-card-text v-html="`${live.body}`" />
         <v-card-text v-if="live.reserve">
-          <Foam />
+          <Form />
         </v-card-text>
       </div>
     </v-card>
