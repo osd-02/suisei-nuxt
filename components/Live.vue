@@ -11,7 +11,7 @@
         <v-sheet class="data-title-wrapper" color="success">
           <v-card-title class="live-title white--text" v-html="live.title" />
         </v-sheet>
-        <v-card-text> 投稿日 : {{ live.postDate }} </v-card-text>
+        <v-card-text> 投稿日 : {{ live.formatedPostDate }} </v-card-text>
         <div
           class="img-wrapper"
           if="live.img"
@@ -25,24 +25,24 @@
         </v-card-text>
         <v-card-text> ACT : {{ live.act }} </v-card-text>
         <v-card-text>
-          {{ live.liveDate }}<br />
-          OPEN / START : {{ live.liveTimeOpen }} / {{ live.liveTimeStart }}
+          {{ live.formatedLiveDate }}<br />
+          OPEN / START : {{ live.formatedLiveDateOpen }} /
+          {{ live.liveTimeStart }}
         </v-card-text>
         <v-card-text v-if="live.feeDoor">
           ADV / DOOR : ￥{{ live.feeAdv }} / ￥{{ live.feeDoor }}
         </v-card-text>
         <v-card-text v-else> ADV / DOOR : ￥{{ live.feeAdv }} / - </v-card-text>
         <v-card-text v-html="`${live.body}`" />
-        <v-card-text v-if="live.reserve">
+        <!-- <v-card-text v-if="live.reserve">
           <Foam />
-        </v-card-text>
+        </v-card-text> -->
       </div>
     </v-card>
   </div>
 </template>
 
-<script>
-import moment from 'moment'
+<script lang="js">
 export default {
   props: ['data'],
 }

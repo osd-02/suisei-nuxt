@@ -12,7 +12,7 @@
           <v-card-title class="news-title white--text" v-html="news.title" />
         </v-sheet>
         <v-card-text>
-          投稿日 : {{ news.postDate }}
+          投稿日 : {{ news.formatedPostDate }}
         </v-card-text>
         <div
           class="img-wrapper"

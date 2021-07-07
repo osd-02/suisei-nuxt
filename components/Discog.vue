@@ -15,7 +15,7 @@
           />
         </v-sheet>
         <v-card-text>
-          投稿日 : {{ discog.postDate }}
+          投稿日 : {{ discog.formatedPostDate }}
         </v-card-text>
         <div
           class="img-wrapper"
@@ -26,7 +26,7 @@
           <img :src="img.image[0].url" />
         </div>
         <v-card-text>
-          リリース日 : {{ discog.releaseDate }}
+          リリース日 : {{ discog.formatedReleaseDate }}
         </v-card-text>
         <v-card-text v-if="discog.price">
           価格 : ￥{{ discog.price }}

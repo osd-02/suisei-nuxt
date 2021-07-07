@@ -61,7 +61,7 @@ export default {
         fs: 'empty',
       }
     },
-    transpile: ['vee-validate'],
+    transpile: ['vee-validate', 'date-utils'],
   },
 
   plugins: ['@/plugins/flamelink', '@/plugins/vee-validate'],
