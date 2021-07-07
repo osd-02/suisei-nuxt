@@ -2,7 +2,7 @@
   <div>
     <v-card
       v-for="live in data"
-      v-bind:key="live.index"
+      v-bind:key="live.order"
       color="sub"
       class="card"
       outlined
@@ -35,7 +35,7 @@
         <v-card-text v-else> ADV / DOOR : ￥{{ live.feeAdv }} / - </v-card-text>
         <v-card-text v-html="`${live.body}`" />
         <!-- <v-card-text v-if="live.reserve">
-          <Foam />
+          <Form />
         </v-card-text> -->
       </div>
     </v-card>
