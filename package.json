@@ -13,6 +13,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/vuetify": "^1.12.1",
     "core-js": "^3.9.1",
+    "date-utils": "^1.2.21",
     "dotenv": "^10.0.0",
     "firebase": "^8.6.8",
     "firebase-admin": "^9.10.0",

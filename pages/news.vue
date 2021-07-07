@@ -35,29 +35,30 @@
 </style>
 
 <script lang="js">
-  function formatPostDate (object, after) {
-    for (const property in object) {
-          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
-        }
+require('date-utils');
+
+function formatDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].order = object[property].postDate.getTime()
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
   }
+};
 
 export default {
   async asyncData({ app }) {
     try {
-      const liveData = await app.flamelink.content.get({
-        schemaKey: 'live',
-        populate: true,
-      })
       const newsData = await app.flamelink.content.get({
         schemaKey: 'news',
         populate: true,
       })
-      const discogData = await app.flamelink.content.get({
-        schemaKey: 'discog',
-        populate: true,
-      })
 
-    formatPostDate (newsData, '/')
+    formatDate (newsData)
       return { newsData }
     } catch (err) {
       console.log(err)

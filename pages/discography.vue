@@ -35,17 +35,22 @@
 </style>
 
 <script lang="js">
+require('date-utils');
 
-  function formatReleaseDate (object, after) {
-    for (const property in object) {
-          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
-        }
+function formatDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].releaseDate = new Date(object[property].releaseDate)
+    object[property].order = object[property].releaseDate.getTime()
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedReleaseDate = new Date(object[property].releaseDate).toFormat("YYYY年MM月DD日")
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
   }
-  function formatPostDate (object, after) {
-    for (const property in object) {
-          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
+};
 
 export default {
   async asyncData({ app }) {
@@ -55,8 +60,8 @@ export default {
         populate: true,
       })
 
-      formatReleaseDate(discogData, '/')
-      formatPostDate(discogData, '/')
+      formatDate(discogData)
+      console.log(discogData)
       return { discogData }
     } catch (err) {
       console.log(err)

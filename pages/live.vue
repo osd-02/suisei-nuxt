@@ -35,22 +35,24 @@
 </style>
 
 <script lang="js">
+require('date-utils');
 
-  function formatLiveDate (object, after) {
-    for (const property in object) {
-          object[property].liveDate = object[property].liveDate.slice(0, -15).replace(/-/g, after)
-        }
+function formatDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].liveDate = new Date(object[property].liveDate)
+    object[property].order = object[property].liveDate.getTime()
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
+    console.log(Date.compare(object[property].nowDate, object[property].postDate))
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
   }
-  function formatReleaseDate (object, after) {
-    for (const property in object) {
-          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
-  function formatPostDate (object, after) {
-    for (const property in object) {
-          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
+};
 
 export default {
   async asyncData({ app }) {
@@ -60,14 +62,13 @@ export default {
         populate: true,
       })
 
+      formatDate(liveData)
       console.log({ liveData })
-      formatLiveDate(liveData, '/')
-      formatPostDate(liveData, '/')
       return { liveData }
     } catch (err) {
       console.log(err)
       return { data: [] }
     }
-  },
-}
+  }
+};
 </script>
