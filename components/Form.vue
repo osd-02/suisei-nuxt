@@ -6,7 +6,7 @@
       netlify
       tag="form"
       class="p-contact__form"
-      name="contact"
+      name="reserve"
       method="POST"
       data-netlify-honeypot="bot-field"
       @submit.prevent="onSubmit"
@@ -27,7 +27,7 @@
         </div>
 
         <div class="p-contact__item">
-          <label for="name">取り置き名（カタカナ</label>
+          <label for="name">取り置き名（カタカナ）</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required|katakana"
@@ -154,6 +154,7 @@ export default {
       this.completeMessage = '送信処理中…'
       const params = new URLSearchParams()
       params.append('form-name', 'contact')
+      params.append('live', this.live)
       params.append('name', this.name)
       params.append('useremail', this.email)
       params.append('ticket', this.ticket)
@@ -182,7 +183,7 @@ export default {
       this.ticket = ''
       this.isError = false
       this.$refs.observer.reset()
-    },
-  },
+    }
+  }
 }
 </script>
