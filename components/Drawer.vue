@@ -69,6 +69,12 @@ export default {
           img: require('../static/saturn.png'),
           link: '/news',
         },
+        {
+          title: 'Reserve',
+          id: 6,
+          img: require('../static/jupiter.png'),
+          link: '/reserve',
+        },
       ],
     }
   },

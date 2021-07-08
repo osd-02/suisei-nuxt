@@ -4,7 +4,9 @@
       <img id="home-logo" src="../assets/img/profile.png" />
     </div>
     <v-sheet color="main">
-      <!-- <img :src="profileData.img.image.url" /> -->
+      <div class="img-wrapper">
+        <img :src="profileData.img[0].image[0].url" />
+      </div>
       <div class="body" v-html="`${profileData.body}`" />
     </v-sheet>
     <div id="footer-space" />
@@ -29,6 +31,12 @@
       height: 30px;
     }
   }
+  .img-wrapper {
+    padding: 0 16px 16px 16px;
+    img {
+      border-radius: 16px;
+    }
+  }
   .body {
     text-align: center;
   }
@@ -43,11 +51,9 @@ export default {
   async asyncData({ app }) {
     try {
       const profileData = await app.flamelink.content.get({
-        schemaKey: 'profile',
+        schemaKey: 'prof',
         populate: true,
       })
-
-    console.log(profileData.img.image)
       return { profileData }
     } catch (err) {
       console.log(err)

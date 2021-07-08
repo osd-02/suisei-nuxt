@@ -16,13 +16,30 @@
       <b>取り置きフォーム</b>
       <div class="ticket-body">
         <div class="p-contact__item">
-          <label for="name">取り置き名（カタカナ）: </label>
+          <label for="name">公演名 </label>
+          <v-select
+            :items="data"
+            label="live"
+            id="live"
+            name="live"
+            v-model="live"
+          ></v-select>
+        </div>
+
+        <div class="p-contact__item">
+          <label for="name">取り置き名（カタカナ</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required|katakana"
             name="取り置き名"
           >
-            <v-text-field type="text" id="name" name="name" v-model="name" />
+            <v-text-field
+              type="text"
+              id="name"
+              name="name"
+              v-model="name"
+              label="name"
+            />
             <p v-show="errors.length" class="p-contact__error">
               {{ errors[0] }}
             </p>
@@ -31,7 +48,7 @@
         <!-- /.p-contact__item -->
 
         <div class="p-contact__item">
-          <label for="useremail">メールアドレス: </label>
+          <label for="useremail">メールアドレス</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required|email|max:256"
@@ -43,6 +60,7 @@
               name="useremail"
               v-model="useremail"
               autocomplete="email"
+              label="e-mail"
             />
             <p v-show="errors.length" class="p-contact__error">
               {{ errors[0] }}
@@ -52,7 +70,7 @@
         <!-- /.p-contact__item -->
 
         <div class="p-contact__item">
-          <label for="message">取り置き枚数 : </label>
+          <label for="message">取り置き枚数</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required"
@@ -63,6 +81,7 @@
               id="ticket"
               name="ticket"
               v-model="ticket"
+              label="number of sheets"
             />
             <p v-show="errors.length" class="p-contact__error">
               {{ errors[0] }}
@@ -100,10 +119,12 @@
 }
 </style>
 
-<script>
+<script lang="js">
+
 export default {
   data() {
     return {
+      live: '',
       name: '',
       useremail: '',
       ticket: '',
@@ -114,6 +135,7 @@ export default {
       completeMessage: '',
     }
   },
+  props: ['data'],
   computed: {
     sendingClass() {
       return {
@@ -154,6 +176,7 @@ export default {
         })
     },
     resetForm() {
+      this.live = ''
       this.name = ''
       this.useremail = ''
       this.ticket = ''
