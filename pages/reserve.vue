@@ -4,10 +4,7 @@
       <img id="home-logo" src="../assets/img/reserve.png" />
     </div>
     <v-sheet color="main">
-      <div class="img-wrapper">
-        <img :src="profileData.img[0].image[0].url" />
-      </div>
-      <div class="body" v-html="`${profileData.body}`" />
+      <Form :data="this.items" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -47,18 +44,47 @@
 </style>
 
 <script lang="js">
+require('date-utils');
+
+function formatDate (object) { //取り置きの項目追加関数
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].liveDate = new Date(object[property].liveDate)
+    object[property].order = object[property].liveDate.getTime()
+    console.log(Date.compare(object[property].nowDate, object[property].postDate))
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true || Date.compare(object[property].nowDate, object[property].liveDate) == true) {
+      delete object[property]
+    };
+  }
+};
+
+const items = []
+function addLiveName (object) {
+  for (const property in object) {
+    if (object[property].reserve == true) {
+      items.push(object[property].title)
+    };
+  }
+};
+
 export default {
-  async asyncData({ app }) {
-    try {
-      const profileData = await app.flamelink.content.get({
-        schemaKey: 'prof',
-        populate: true,
-      })
-      return { profileData }
-    } catch (err) {
-      console.log(err)
-      return { data: [] }
-    }
-  },
+
+async asyncData({ app }) {
+  try {
+    const liveData = await app.flamelink.content.get({
+      schemaKey: 'live',
+      populate: true,
+    })
+
+    formatDate(liveData)
+    addLiveName(liveData)
+    return { items }
+  } catch (err) {
+    console.log(err)
+    return { data: [] }
+  }
 }
+};
 </script>
