@@ -52,7 +52,6 @@ function formatDate (object) { //取り置きの項目追加関数
     object[property].postDate = new Date(object[property].postDate)
     object[property].liveDate = new Date(object[property].liveDate)
     object[property].order = object[property].liveDate.getTime()
-    console.log(Date.compare(object[property].nowDate, object[property].postDate))
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == true || Date.compare(object[property].nowDate, object[property].liveDate) == true) {
       delete object[property]
