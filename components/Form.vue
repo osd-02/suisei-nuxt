@@ -6,7 +6,7 @@
       netlify
       tag="form"
       class="p-contact__form"
-      name="contact"
+      name="reserve"
       method="POST"
       data-netlify-honeypot="bot-field"
       @submit.prevent="onSubmit"
@@ -27,7 +27,7 @@
         </div>
 
         <div class="p-contact__item">
-          <label for="name">取り置き名（カタカナ</label>
+          <label for="name">取り置き名（カタカナ）</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required|katakana"
@@ -122,6 +122,7 @@
 <script lang="js">
 
 export default {
+  props: ['data'],
   data() {
     return {
       live: '',
@@ -135,7 +136,6 @@ export default {
       completeMessage: '',
     }
   },
-  props: ['data'],
   computed: {
     sendingClass() {
       return {
@@ -154,9 +154,11 @@ export default {
       this.completeMessage = '送信処理中…'
       const params = new URLSearchParams()
       params.append('form-name', 'contact')
+      params.append('live', this.live)
       params.append('name', this.name)
       params.append('useremail', this.email)
       params.append('ticket', this.ticket)
+      console.log(params.toString())
       if (this.botField) {
         params.append('bot-field', this.botField)
       }
@@ -164,11 +166,13 @@ export default {
         .$post('/', params)
         .then(() => {
           this.completeMessage = 'お問い合わせを送信しました！'
+          console.log(this.completeMessage)
           this.resetForm()
           this.isSubmit = true
         })
         .catch((err) => {
           this.completeMessage = 'お問い合わせの送信が失敗しました'
+          console.log(this.completeMessage)
           this.isError = true
         })
         .finally(() => {
@@ -182,7 +186,7 @@ export default {
       this.ticket = ''
       this.isError = false
       this.$refs.observer.reset()
-    },
-  },
+    }
+  }
 }
 </script>
