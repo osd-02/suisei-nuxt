@@ -163,7 +163,7 @@ export default {
         params.append('bot-field', this.botField)
       }
       this.$axios
-        .$post('https://suiseihp.netlify.app/reserve/', params)
+        .$post('/', params)
         .then(() => {
           this.completeMessage = 'お問い合わせを送信しました！'
           console.log(this.completeMessage)
