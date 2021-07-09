@@ -153,7 +153,7 @@ export default {
       this.isSending = true
       this.completeMessage = '送信処理中…'
       const params = new URLSearchParams()
-      params.append('form-name', 'contact')
+      params.append('form-name', 'reserve')
       params.append('live', this.live)
       params.append('name', this.name)
       params.append('useremail', this.email)
@@ -163,7 +163,7 @@ export default {
         params.append('bot-field', this.botField)
       }
       this.$axios
-        .$post('https://suiseihp.netlify.app', params)
+        .$post('https://suiseihp.netlify.app/reserve', params)
         .then(() => {
           this.completeMessage = 'お問い合わせを送信しました！'
           console.log(this.completeMessage)
