@@ -45,7 +45,5 @@ export default ({ app }) => {
       firebaseApp = firebase.app();
     }
   }
-  // console.log(firebaseApp);
-  // console.log(process.env);
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
 };
