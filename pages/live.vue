@@ -46,7 +46,6 @@ function formatDate (object) {
     object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
     object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
     object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
-    console.log(Date.compare(object[property].nowDate, object[property].postDate))
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
       delete object[property]
@@ -63,7 +62,6 @@ export default {
       })
 
       formatDate(liveData)
-      console.log({ liveData })
       return { liveData }
     } catch (err) {
       console.log(err)

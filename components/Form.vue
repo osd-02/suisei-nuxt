@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="p-contact" color="main" elevation="2">
+  <v-sheet class="p-contact" color="main">
     <validation-observer
       ref="observer"
       v-slot="{ invalid, validated }"
@@ -112,7 +112,7 @@
   background-color: lavenderblush;
   border: 1px double red;
   border-radius: 16px;
-  padding: 16px;
+  padding: 32px 16px;
   .ticket-body {
     padding: 16px 0 16px 0;
   }
@@ -158,7 +158,6 @@ export default {
       params.append('name', this.name)
       params.append('useremail', this.email)
       params.append('ticket', this.ticket)
-      console.log(params.toString())
       if (this.botField) {
         params.append('bot-field', this.botField)
       }
@@ -166,13 +165,11 @@ export default {
         .$post('https://suiseihp.netlify.app/reserve', params)
         .then(() => {
           this.completeMessage = 'お問い合わせを送信しました！'
-          console.log(this.completeMessage)
           this.resetForm()
           this.isSubmit = true
         })
         .catch((err) => {
           this.completeMessage = 'お問い合わせの送信が失敗しました'
-          console.log(this.completeMessage)
           this.isError = true
         })
         .finally(() => {

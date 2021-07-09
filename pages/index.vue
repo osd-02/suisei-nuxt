@@ -37,22 +37,35 @@
 </style>
 
 <script lang="js">
+require('date-utils');
 
-  function formatLiveDate (object, after) {
-    for (const property in object) {
-          object[property].liveDate = object[property].liveDate.slice(0, -15).replace(/-/g, after)
-        }
+function formatLiveDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].liveDate = new Date(object[property].liveDate)
+    object[property].order = object[property].liveDate.getTime()
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
   }
-  function formatReleaseDate (object, after) {
-    for (const property in object) {
-          object[property].releaseDate = object[property].releaseDate.slice(0, -15).replace(/-/g, after)
-        }
+};
+function formatDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].order = object[property].postDate.getTime()
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
   }
-  function formatPostDate (object, after) {
-    for (const property in object) {
-          object[property].postDate = object[property].postDate.slice(0, -15).replace(/-/g, after)
-        }
-  }
+};
 
 export default {
   async asyncData({ app }) {
@@ -70,9 +83,9 @@ export default {
         populate: true,
       })
 
-      console.log({ liveData, newsData, discogData })
-      formatLiveDate(liveData, '/')
-      formatReleaseDate(discogData, '/')
+      formatLiveDate(liveData)
+      formatDate(discogData)
+      formatDate(newsData)
       return { liveData, newsData, discogData }
     } catch (err) {
       console.log(err)

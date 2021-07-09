@@ -61,7 +61,6 @@ export default {
       })
 
       formatDate(discogData)
-      console.log(discogData)
       return { discogData }
     } catch (err) {
       console.log(err)
