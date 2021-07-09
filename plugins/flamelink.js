@@ -1,6 +1,6 @@
 require("dotenv").config();
 import flamelink from "flamelink/app";
-import { firebase } from "@firebase/app";
+import firebase from "@firebase/app";
 // This example uses RTDB (Realtime Database) - replace with `cf` for Cloud Firestore
 import "flamelink/cf/content";
 import "flamelink/cf/storage";

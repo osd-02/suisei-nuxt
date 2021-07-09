@@ -122,6 +122,7 @@
 <script lang="js">
 
 export default {
+  props: ['data'],
   data() {
     return {
       live: '',
@@ -135,7 +136,6 @@ export default {
       completeMessage: '',
     }
   },
-  props: ['data'],
   computed: {
     sendingClass() {
       return {
@@ -158,6 +158,7 @@ export default {
       params.append('name', this.name)
       params.append('useremail', this.email)
       params.append('ticket', this.ticket)
+      console.log(params.toString())
       if (this.botField) {
         params.append('bot-field', this.botField)
       }
@@ -165,11 +166,13 @@ export default {
         .$post('/', params)
         .then(() => {
           this.completeMessage = 'お問い合わせを送信しました！'
+          console.log(this.completeMessage)
           this.resetForm()
           this.isSubmit = true
         })
         .catch((err) => {
           this.completeMessage = 'お問い合わせの送信が失敗しました'
+          console.log(this.completeMessage)
           this.isError = true
         })
         .finally(() => {

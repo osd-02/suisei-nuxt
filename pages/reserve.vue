@@ -69,21 +69,20 @@ function addLiveName (object) {
 };
 
 export default {
+  async asyncData({ app }) {
+    try {
+      const liveData = await app.flamelink.content.get({
+        schemaKey: 'live',
+        populate: true,
+      })
 
-async asyncData({ app }) {
-  try {
-    const liveData = await app.flamelink.content.get({
-      schemaKey: 'live',
-      populate: true,
-    })
-
-    formatDate(liveData)
-    addLiveName(liveData)
-    return { items }
-  } catch (err) {
-    console.log(err)
-    return { data: [] }
+      formatDate(liveData)
+      addLiveName(liveData)
+      return { items, liveData }
+    } catch (err) {
+      console.log(err)
+      return { data: [] }
+    }
   }
-}
 };
 </script>
