@@ -9,6 +9,18 @@
     style="width: 70vw"
   >
     <div id="wrapper-contents">
+      <v-list id="d-title">
+        <v-list-item id="d-title-item">
+          <v-list-item-content id="d-title-item-content">
+            <v-list-item-title id="d-title-item-content-title">
+              Site navi
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+      <v-divider />
+
       <v-list id="d-wrapper">
         <v-list-item v-for="drawerItem in drawerItems" :key="drawerItem.id">
           <v-list-item-icon class="icon-wrapper">
@@ -89,6 +101,18 @@ export default {
 
 <style lang="scss" scoped>
 $footer-height: 32px;
+$header-height: 59px;
+#d-title {
+  &-item {
+    padding: 0 44.25px;
+    min-height: 0;
+    &-content {
+      &-title {
+        text-align: left;
+      }
+    }
+  }
+}
 #wrapper {
   #wrapper-contents {
     height: 100%;
@@ -101,7 +125,7 @@ $footer-height: 32px;
   }
 
   #d-wrapper {
-    height: calc(100% - #{$footer-height});
+    height: calc(100% - #{$footer-height + $header-height});
     display: flex;
     flex-flow: column;
     .icon-wrapper {
