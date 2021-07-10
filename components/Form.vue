@@ -48,7 +48,7 @@
         <!-- /.p-contact__item -->
 
         <div class="p-contact__item">
-          <label for="useremail">メールアドレス</label>
+          <label for="email">メールアドレス</label>
           <validation-provider
             v-slot="{ errors }"
             rules="required|email|max:256"
@@ -56,9 +56,9 @@
           >
             <v-text-field
               type="text"
-              id="useremail"
-              name="useremail"
-              v-model="useremail"
+              id="email"
+              name="email"
+              v-model="email"
               autocomplete="email"
               label="e-mail"
             />
@@ -127,7 +127,7 @@ export default {
     return {
       live: '',
       name: '',
-      useremail: '',
+      email: '',
       ticket: '',
       botField: '',
       isSubmit: false,
@@ -156,7 +156,7 @@ export default {
       params.append('form-name', 'reserve')
       params.append('live', this.live)
       params.append('name', this.name)
-      params.append('useremail', this.email)
+      params.append('email', this.email)
       params.append('ticket', this.ticket)
       if (this.botField) {
         params.append('bot-field', this.botField)
@@ -179,7 +179,7 @@ export default {
     resetForm() {
       this.live = ''
       this.name = ''
-      this.useremail = ''
+      this.email = ''
       this.ticket = ''
       this.isError = false
       this.$refs.observer.reset()
