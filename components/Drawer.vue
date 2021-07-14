@@ -64,14 +64,20 @@ export default {
           link: '/discography',
         },
         {
-          title: 'News',
+          title: 'Music Video',
           id: 5,
+          img: require('../static/neptune.png'),
+          link: '/mv',
+        },
+        {
+          title: 'News',
+          id: 6,
           img: require('../static/saturn.png'),
           link: '/news',
         },
         {
           title: 'Reserve',
-          id: 6,
+          id: 7,
           img: require('../static/jupiter.png'),
           link: '/reserve',
         },
