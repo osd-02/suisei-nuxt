@@ -61,7 +61,7 @@ export default {
           title: 'Discography',
           id: 4,
           img: require('../static/earth.png'),
-          link: '/discography',
+          link: '/discog',
         },
         {
           title: 'Music Video',

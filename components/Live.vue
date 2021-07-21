@@ -35,10 +35,10 @@
         <v-card-text v-else> ADV / DOOR : ￥{{ live.feeAdv }} / - </v-card-text>
         <v-card-text v-html="`${live.body}`" />
         <v-card-text v-if="live.reserve">
-          取り置き可能！<br>reserveページからご予約ください．
+          取り置き可能！<br />reserveページからご予約ください．
         </v-card-text>
         <v-card-text v-else>
-          取り置き不可！<br>企画公式ページなどからご予約ください．
+          取り置き不可！<br />企画公式ページなどからご予約ください．
         </v-card-text>
       </div>
     </v-card>
