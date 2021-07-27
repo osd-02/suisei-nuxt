@@ -5,6 +5,7 @@
     </div>
     <v-sheet color="main">
       <HomeNews :data="this.homeNewsData" id="home-news-location" />
+      <Twitter />
     </v-sheet>
     <div id="footer-space" />
   </div>
