@@ -4,9 +4,8 @@
       <img id="home-logo" src="../assets/img/home.png" />
     </div>
     <v-sheet color="main">
-      <Live :data="this.liveData" id="live-location" />
-      <Discog :data="this.discogData" id="discog-location" />
-      <News :data="this.newsData" id="news-location" />
+      <HomeNews :data="this.homeNewsData" id="home-news-location" />
+      <Twitter />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -39,33 +38,22 @@
 <script lang="js">
 require('date-utils');
 
-function formatLiveDate (object) {
-  for (const property in object) {
-    object[property].nowDate = new Date()
-    object[property].postDate = new Date(object[property].postDate)
-    object[property].liveDate = new Date(object[property].liveDate)
-    object[property].order = object[property].liveDate.getTime()
-    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
-      delete object[property]
-    };
-  }
-};
+const homeNewsTitle = []
+const homeNewsSchema = []
 function formatDate (object) {
   for (const property in object) {
     object[property].nowDate = new Date()
+    object[property].baseDate = new Date().remove({"months": 1})
     object[property].postDate = new Date(object[property].postDate)
-    object[property].order = object[property].postDate.getTime()
-    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+    console.log(object[property])
 
-    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
-      delete object[property]
+    if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
+      homeNewsSchema.push(object[property]._fl_meta_.schema)
+      homeNewsTitle.push(object[property].title)
     };
   }
 };
+const homeNewsData = [homeNewsTitle, homeNewsSchema]
 
 export default {
   async asyncData({ app }) {
@@ -83,14 +71,15 @@ export default {
         populate: true,
       })
 
-      formatLiveDate(liveData)
-      formatDate(discogData)
+      formatDate(liveData)
       formatDate(newsData)
-      return { liveData, newsData, discogData }
+      formatDate(discogData)
+      console.log(homeNewsData)
+      return { homeNewsData }
     } catch (err) {
       console.log(err)
-      return { data: [] }
+      return { homeNewsData: [] }
     }
-  },
-}
+  }
+};
 </script>
