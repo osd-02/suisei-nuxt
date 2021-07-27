@@ -21,9 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .btn {
-  margin: 10px;
-  padding: 10px;
-  display: block;
+  margin: 8px 0;
   width: 100%;
   overflow: scroll;
   justify-content: left;
