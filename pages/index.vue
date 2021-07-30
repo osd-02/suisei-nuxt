@@ -5,6 +5,7 @@
     </div>
     <v-sheet color="main">
       <HomeNews :data="this.homeNewsData" id="home-news-location" />
+      <LatestMv :data="this.latestMvData" id="latest-mv-location" />
       <Twitter />
     </v-sheet>
     <div id="footer-space" />
@@ -45,7 +46,18 @@ function formatDate (object) {
     object[property].nowDate = new Date()
     object[property].baseDate = new Date().remove({"months": 1})
     object[property].postDate = new Date(object[property].postDate)
-    console.log(object[property])
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
+      homeNewsSchema.push(object[property]._fl_meta_.schema)
+      homeNewsTitle.push(object[property].title)
+    };
+  }
+};
+function chooseMvDate (object) {
+  for (const property in object) {
+    object[property].nowDate = new Date()
+    object[property].baseDate = new Date().remove({"months": 1})
+    object[property].postDate = new Date(object[property].postDate)
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
       homeNewsSchema.push(object[property]._fl_meta_.schema)
@@ -70,12 +82,18 @@ export default {
         schemaKey: 'discog',
         populate: true,
       })
+      const latestMvData = await app.flamelink.content.get({
+        schemaKey: 'mv',
+        populate: true,
+      })
 
       formatDate(liveData)
       formatDate(newsData)
       formatDate(discogData)
-      console.log(homeNewsData)
-      return { homeNewsData }
+      formatDate(latestMvData)
+      console.log(latestMvData)
+
+      return { homeNewsData, latestMvData }
     } catch (err) {
       console.log(err)
       return { homeNewsData: [] }

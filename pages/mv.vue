@@ -65,11 +65,6 @@ export default {
         schemaKey: 'mv',
         populate: true,
       })
-      // var db = {}
-      // for (const object in mvData) {
-      //   db.push(object)
-      // }
-      console.log(mvData)
       return { mvData }
     } catch (err) {
       console.log(err)
