@@ -58,13 +58,33 @@
 </style>
 
 <script lang="js">
+require('date-utils');
+
+const mvData = []
+function formatDate (object) {
+  for (const property in object) {
+    mvData[object[property].order] = object[property]
+    object[property].nowDate = new Date()
+    object[property].postDate = new Date(object[property].postDate)
+    object[property].liveDate = new Date(object[property].liveDate)
+    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
+    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
+
+    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
+      delete object[property]
+    };
+  }
+};
+
 export default {
   async asyncData({ app }) {
     try {
-      const mvData = await app.flamelink.content.get({
+      const data = await app.flamelink.content.get({
         schemaKey: 'mv',
         populate: true,
       })
+      formatDate(data)
       return { mvData }
     } catch (err) {
       console.log(err)
