@@ -20,8 +20,7 @@
     "flamelink": "^1.0.0-alpha.34",
     "fs": "^0.0.1-security",
     "moment": "^2.29.1",
-    "nuxt": "^2.15.3",
-    "vue-tweet-embed": "^2.4.0"
+    "nuxt": "^2.15.3"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^4.0.1",

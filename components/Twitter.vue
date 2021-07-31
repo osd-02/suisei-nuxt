@@ -1,29 +1,9 @@
 <template>
   <v-sheet class="main">
     <img id="logo" src="../assets/img/sns.png" />
-    <Timeline
-      :id="user_id"
-      sourceType="profile"
-      data-chrome="nofooter noborders transparent"
-      :options="{ height: twitterHeight }"
-    />
+    <a class="twitter-timeline" data-lang="ja" data-height="600" data-theme="dark" href="https://twitter.com/suiseinekko?ref_src=twsrc%5Etfw">Tweets by suiseinekko</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </v-sheet>
 </template>
-
-<script>
-import { Timeline } from 'vue-tweet-embed'
-export default {
-  components: {
-    Timeline,
-  },
-  data: function () {
-    return {
-      user_id: 'suiseinekko',
-      twitterHeight: '600',
-    }
-  },
-}
-</script>
 
 <style lang="scss" scoped>
 .main {
