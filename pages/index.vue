@@ -41,6 +41,7 @@ require('date-utils');
 
 const homeNewsTitle = []
 const homeNewsSchema = []
+let latestMvData = []
 function formatDate (object) {
   for (const property in object) {
     object[property].nowDate = new Date()
@@ -53,15 +54,10 @@ function formatDate (object) {
     };
   }
 };
-function chooseMvDate (object) {
+function chooseMvData (object) {
   for (const property in object) {
-    object[property].nowDate = new Date()
-    object[property].baseDate = new Date().remove({"months": 1})
-    object[property].postDate = new Date(object[property].postDate)
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
-      homeNewsSchema.push(object[property]._fl_meta_.schema)
-      homeNewsTitle.push(object[property].title)
+    if (object[property].order == 0) {
+      latestMvData = object[property]
     };
   }
 };
@@ -70,27 +66,28 @@ const homeNewsData = [homeNewsTitle, homeNewsSchema]
 export default {
   async asyncData({ app }) {
     try {
-      const liveData = await app.flamelink.content.get({
+      const liveDataOrigin = await app.flamelink.content.get({
         schemaKey: 'live',
         populate: true,
       })
-      const newsData = await app.flamelink.content.get({
+      const newsDataOrigin = await app.flamelink.content.get({
         schemaKey: 'news',
         populate: true,
       })
-      const discogData = await app.flamelink.content.get({
+      const discogDataOrigin = await app.flamelink.content.get({
         schemaKey: 'discog',
         populate: true,
       })
-      const latestMvData = await app.flamelink.content.get({
+      const mvDataOrigin = await app.flamelink.content.get({
         schemaKey: 'mv',
         populate: true,
       })
 
-      formatDate(liveData)
-      formatDate(newsData)
-      formatDate(discogData)
-      formatDate(latestMvData)
+      formatDate(liveDataOrigin)
+      formatDate(newsDataOrigin)
+      formatDate(discogDataOrigin)
+      formatDate(mvDataOrigin)
+      chooseMvData(mvDataOrigin)
       console.log(latestMvData)
 
       return { homeNewsData, latestMvData }

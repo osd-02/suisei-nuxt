@@ -37,12 +37,13 @@
 <script lang="js">
 require('date-utils');
 
+const liveData = []
 function formatDate (object) {
   for (const property in object) {
+    liveData[object[property].order] = object[property]
     object[property].nowDate = new Date()
     object[property].postDate = new Date(object[property].postDate)
     object[property].liveDate = new Date(object[property].liveDate)
-    object[property].order = object[property].liveDate.getTime()
     object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
     object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
     object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
@@ -56,12 +57,12 @@ function formatDate (object) {
 export default {
   async asyncData({ app }) {
     try {
-      const liveData = await app.flamelink.content.get({
+      const data = await app.flamelink.content.get({
         schemaKey: 'live',
         populate: true,
       })
 
-      formatDate(liveData)
+      formatDate(data)
       return { liveData }
     } catch (err) {
       console.log(err)
