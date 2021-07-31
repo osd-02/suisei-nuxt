@@ -37,12 +37,13 @@
 <script lang="js">
 require('date-utils');
 
+const discogData = []
 function formatDate (object) {
   for (const property in object) {
+    discogData[object[property].order] = object[property]
     object[property].nowDate = new Date()
     object[property].postDate = new Date(object[property].postDate)
     object[property].releaseDate = new Date(object[property].releaseDate)
-    object[property].order = object[property].releaseDate.getTime()
     object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
     object[property].formatedReleaseDate = new Date(object[property].releaseDate).toFormat("YYYY年MM月DD日")
 
@@ -55,12 +56,12 @@ function formatDate (object) {
 export default {
   async asyncData({ app }) {
     try {
-      const discogData = await app.flamelink.content.get({
+      const data = await app.flamelink.content.get({
         schemaKey: 'discog',
         populate: true,
       })
 
-      formatDate(discogData)
+      formatDate(data)
       return { discogData }
     } catch (err) {
       console.log(err)
