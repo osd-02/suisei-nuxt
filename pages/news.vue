@@ -37,11 +37,12 @@
 <script lang="js">
 require('date-utils');
 
+const newsData = []
 function formatDate (object) {
   for (const property in object) {
+    newsData[object[property].order] = object[property]
     object[property].nowDate = new Date()
     object[property].postDate = new Date(object[property].postDate)
-    object[property].order = object[property].postDate.getTime()
     object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
@@ -53,12 +54,13 @@ function formatDate (object) {
 export default {
   async asyncData({ app }) {
     try {
-      const newsData = await app.flamelink.content.get({
+      const data = await app.flamelink.content.get({
         schemaKey: 'news',
         populate: true,
       })
 
-    formatDate (newsData)
+      formatDate (data)
+      console.log(data)
       return { newsData }
     } catch (err) {
       console.log(err)
