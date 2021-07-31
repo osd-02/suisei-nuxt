@@ -1,12 +1,9 @@
 <template>
   <v-sheet color="main">
     <img id="logo" src="../assets/img/latest-mv.png" />
-    <v-sheet class="mv" v-for="mv in data" v-bind:key="mv.index">
-      <v-sheet color="main">
-        <h6>{{ mv.title }}</h6>
-      </v-sheet>
+    <v-sheet class="mv">
       <div class="mv-wrapper">
-        <v-sheet color="main" class="mv" v-html="mv.videoLink" />
+        <v-sheet color="main" class="mv" v-html="data.videoLink" />
       </div>
     </v-sheet>
   </v-sheet>
@@ -17,9 +14,6 @@
   height: 24px;
   margin: 8px 0;
 }
-// .mv {
-//   margin: 24px 0;
-// }
 .mv-wrapper {
   position: relative;
   padding-bottom: 56.25%;
