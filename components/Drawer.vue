@@ -17,7 +17,7 @@
             </a>
           </v-list-item-icon>
           <a :href="drawerItem.link">
-            <v-list-item-title class="primary--text">
+            <v-list-item-title class="item-text">
               {{ drawerItem.title }}
             </v-list-item-title>
           </a>
@@ -128,8 +128,11 @@ $footer-height: 32px;
       height: 100%;
       margin: 0 5vw;
       .icon {
-        height: 25px;
+        height: max(2rem, 2vmax);
       }
+    }
+    .item-text {
+      font-size: max(1.2rem, 1.7vmax);
     }
   }
 
