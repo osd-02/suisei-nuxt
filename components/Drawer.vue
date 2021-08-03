@@ -76,6 +76,12 @@ export default {
           link: '/news',
         },
         {
+          title: 'BASE(Goods)',
+          id: 7,
+          img: require('../static/uranus.png'),
+          link: 'https://suiseipop.thebase.in/',
+        },
+        {
           title: 'Reserve',
           id: 7,
           img: require('../static/jupiter.png'),
