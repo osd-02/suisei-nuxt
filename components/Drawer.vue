@@ -118,7 +118,7 @@ $footer-height: 32px;
   }
 
   #d-wrapper {
-    height: calc(100% - #{ $footer-height });
+    height: calc(100% - #{$footer-height});
     display: flex;
     flex-flow: column;
     .icon-wrapper {
