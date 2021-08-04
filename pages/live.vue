@@ -63,6 +63,7 @@ export default {
       })
 
       formatDate(data)
+      console.log(data)
       return { liveData }
     } catch (err) {
       console.log(err)
