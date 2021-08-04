@@ -83,7 +83,7 @@ export default {
         },
         {
           title: 'Reserve',
-          id: 7,
+          id: 8,
           img: require('../static/jupiter.png'),
           link: '/reserve',
         },
