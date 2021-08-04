@@ -76,6 +76,12 @@ export default {
           link: '/news',
         },
         {
+          title: 'BASE(Goods)',
+          id: 7,
+          img: require('../static/uranus.png'),
+          link: 'https://suiseipop.thebase.in/',
+        },
+        {
           title: 'Reserve',
           id: 7,
           img: require('../static/jupiter.png'),
@@ -118,7 +124,7 @@ $footer-height: 32px;
   }
 
   #d-wrapper {
-    height: calc(100% - #{ $footer-height });
+    height: calc(100% - #{$footer-height});
     display: flex;
     flex-flow: column;
     .icon-wrapper {
