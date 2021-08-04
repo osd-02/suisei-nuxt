@@ -115,6 +115,13 @@
   padding: 32px 16px;
   .ticket-body {
     padding: 16px 0 16px 0;
+    .p-contact__item {
+      .p-contact__error {
+        color: #fffc79;
+        margin: (0, 50px);
+        padding: 0;
+      }
+    }
   }
 }
 </style>
