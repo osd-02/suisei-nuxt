@@ -44,7 +44,7 @@ export default {
         light: {
           main: '#93a9d1',
           sub: '#9395d1',
-          primary: '#facf7d',
+          primary: '#fffc79',
           secondary: '#ccc8bf',
           accent: '#bdd3e2',
           warning: '#aa9e32',

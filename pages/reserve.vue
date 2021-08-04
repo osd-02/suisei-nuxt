@@ -5,6 +5,7 @@
     </div>
     <v-sheet color="main">
       <Form :data="this.items" />
+      <!-- <Contact /> -->
     </v-sheet>
     <div id="footer-space" />
   </div>

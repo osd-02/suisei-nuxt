@@ -4,19 +4,19 @@
       ref="observer"
       v-slot="{ invalid, validated }"
       netlify
-      tag="form"
+      tag="contact"
       class="p-contact__form"
-      name="reserve"
+      name="contact"
       method="POST"
       data-netlify-honeypot="bot-field"
       @submit.prevent="onSubmit"
       :class="sendingClass"
     >
       <input type="hidden" name="form-name" value="contact" />
-      <b>取り置きフォーム</b>
+      <b>お問い合わせ</b>
       <div class="ticket-body">
         <div class="p-contact__item">
-          <label for="name">公演名 </label>
+          <label for="name">お問い合わせ内容 </label>
           <v-select
             :items="data"
             label="live"
@@ -25,27 +25,6 @@
             v-model="live"
           ></v-select>
         </div>
-
-        <div class="p-contact__item">
-          <label for="name">取り置き名（カタカナ）</label>
-          <validation-provider
-            v-slot="{ errors }"
-            rules="required|katakana"
-            name="取り置き名"
-          >
-            <v-text-field
-              type="text"
-              id="name"
-              name="name"
-              v-model="name"
-              label="name"
-            />
-            <p v-show="errors.length" class="p-contact__error">
-              {{ errors[0] }}
-            </p>
-          </validation-provider>
-        </div>
-        <!-- /.p-contact__item -->
 
         <div class="p-contact__item">
           <label for="email">メールアドレス</label>
@@ -61,27 +40,6 @@
               v-model="email"
               autocomplete="email"
               label="e-mail"
-            />
-            <p v-show="errors.length" class="p-contact__error">
-              {{ errors[0] }}
-            </p>
-          </validation-provider>
-        </div>
-        <!-- /.p-contact__item -->
-
-        <div class="p-contact__item">
-          <label for="message">取り置き枚数</label>
-          <validation-provider
-            v-slot="{ errors }"
-            rules="required"
-            name="取り置き枚数"
-          >
-            <v-text-field
-              type="number"
-              id="ticket"
-              name="ticket"
-              v-model="ticket"
-              label="number of sheets"
             />
             <p v-show="errors.length" class="p-contact__error">
               {{ errors[0] }}
@@ -133,9 +91,7 @@ export default {
   data() {
     return {
       live: '',
-      name: '',
       email: '',
-      ticket: '',
       botField: '',
       isSubmit: false,
       isSending: false,
@@ -160,11 +116,9 @@ export default {
       this.isSending = true
       this.completeMessage = '送信処理中…'
       const params = new URLSearchParams()
-      params.append('form-name', 'reserve')
+      params.append('form-name', 'contact')
       params.append('live', this.live)
-      params.append('name', this.name)
       params.append('email', this.email)
-      params.append('ticket', this.ticket)
       if (this.botField) {
         params.append('bot-field', this.botField)
       }
@@ -185,9 +139,7 @@ export default {
     },
     resetForm() {
       this.live = ''
-      this.name = ''
       this.email = ''
-      this.ticket = ''
       this.isError = false
       this.$refs.observer.reset()
     }
