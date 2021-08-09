@@ -104,6 +104,16 @@
       <!-- /.p-contact__submit -->
     </validation-observer>
     <!-- /.p-contact__form -->
+    <v-sheet color="main">
+      <div id="anotherForm">
+        <b>その他のお問い合わせ</b>
+      </div>
+      <v-btn color="success">
+        <a href="mailto:sakanaq0223@gmail.com?subject=suisei お問い合わせ"
+          >お問い合わせ</a
+        >
+      </v-btn>
+    </v-sheet>
   </v-sheet>
 </template>
 
@@ -114,7 +124,7 @@
   border-radius: 16px;
   padding: 32px 16px;
   .ticket-body {
-    padding: 16px 0 16px 0;
+    padding: 16px 0 0 0;
     .p-contact__item {
       .p-contact__error {
         color: #fffc79;
@@ -122,6 +132,9 @@
         padding: 0;
       }
     }
+  }
+  #anotherForm {
+    padding: 32px 0 16px 0;
   }
 }
 </style>
@@ -158,7 +171,7 @@ export default {
   methods: {
     onSubmit() {
       const db = firebase.firestore()
-      let dbReserve = db.collection('reserve')
+      let dbReserve = db.collection("reserve").doc("res").collection(`${this.live}`)
       dbReserve
         .add({
           liveName: this.live,
