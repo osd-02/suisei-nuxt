@@ -48,8 +48,8 @@ function formatDate (object) {
     object[property].postDate = new Date(object[property].postDate)
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
-      homeNewsData[0].push(object[property]._fl_meta_.schema)
-      homeNewsData[1].push(object[property].title)
+      homeNewsData[1].push(object[property]._fl_meta_.schema)
+      homeNewsData[0].push(object[property].title)
     };
   }
 };
