@@ -39,9 +39,8 @@
 <script lang="js">
 require('date-utils');
 
-const homeNewsTitle = []
-const homeNewsSchema = []
 let latestMvData = []
+let homeNewsData = [[],[]]
 function formatDate (object) {
   for (const property in object) {
     object[property].nowDate = new Date()
@@ -49,8 +48,8 @@ function formatDate (object) {
     object[property].postDate = new Date(object[property].postDate)
 
     if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
-      homeNewsSchema.push(object[property]._fl_meta_.schema)
-      homeNewsTitle.push(object[property].title)
+      homeNewsData[0].push(object[property]._fl_meta_.schema)
+      homeNewsData[1].push(object[property].title)
     };
   }
 };
@@ -61,7 +60,6 @@ function chooseMvData (object) {
     };
   }
 };
-const homeNewsData = [homeNewsTitle, homeNewsSchema]
 
 export default {
   async asyncData({ app }) {
@@ -83,12 +81,12 @@ export default {
         populate: true,
       })
 
+      homeNewsData = [[],[]]
       formatDate(liveDataOrigin)
       formatDate(newsDataOrigin)
       formatDate(discogDataOrigin)
       formatDate(mvDataOrigin)
       chooseMvData(mvDataOrigin)
-      console.log(latestMvData)
 
       return { homeNewsData, latestMvData }
     } catch (err) {
