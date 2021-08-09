@@ -134,11 +134,11 @@ $footer-height: 32px;
       height: 100%;
       margin: 0 5vw;
       .icon {
-        height: max(2rem, 2vmax);
+        height: max(1.8rem, 2vmax);
       }
     }
     .item-text {
-      font-size: max(1.2rem, 1.7vmax);
+      font-size: max(1.1rem, 1.6vmax);
     }
   }
 
