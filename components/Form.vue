@@ -120,6 +120,9 @@
 </style>
 
 <script lang="js">
+// import firebaseApp from "firebase/app"
+import firebase from '@/plugins/firebase'
+// console.log(app.firebase)
 
 export default {
   props: ['data'],
@@ -147,33 +150,17 @@ export default {
   },
   methods: {
     onSubmit() {
-      if (this.isSending) {
-        return
-      }
-      this.isSending = true
-      this.completeMessage = '送信処理中…'
-      const params = new URLSearchParams()
-      params.append('form-name', 'reserve')
-      params.append('live', this.live)
-      params.append('name', this.name)
-      params.append('email', this.email)
-      params.append('ticket', this.ticket)
-      if (this.botField) {
-        params.append('bot-field', this.botField)
-      }
-      this.$axios
-        .$post('https://suiseihp.netlify.app/reserve', params)
-        .then(() => {
-          this.completeMessage = 'お問い合わせを送信しました！'
-          this.resetForm()
-          this.isSubmit = true
+      const db = firebase.firestore()
+      let dbReserve = db.collection('reserve')
+      dbReserve
+        .add({
+          liveName: this.live,
+          name: this.name,
+          email: this.email,
+          ticket: this.ticket,
         })
-        .catch((err) => {
-          this.completeMessage = 'お問い合わせの送信が失敗しました'
-          this.isError = true
-        })
-        .finally(() => {
-          this.isSending = false
+        .then(ref => {
+          console.log('Add ID: ', ref.id)
         })
     },
     resetForm() {
