@@ -109,8 +109,13 @@
         <b>その他のお問い合わせ</b>
       </div>
       <v-btn color="success">
-        <a href="mailto:sakanaq0223@gmail.com?subject=suisei お問い合わせ"
-          >お問い合わせ</a
+        <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
+          >お問い合わせ(一般用)</a
+        >
+      </v-btn>
+      <v-btn color="success">
+        <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
+          >お問い合わせ(関係者用)</a
         >
       </v-btn>
     </v-sheet>
