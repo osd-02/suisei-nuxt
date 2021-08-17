@@ -108,12 +108,12 @@
       <div id="anotherForm">
         <b>その他のお問い合わせ</b>
       </div>
-      <v-btn color="success">
+      <v-btn class="info-btn" color="success">
         <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
           >お問い合わせ(一般用)</a
         >
       </v-btn>
-      <v-btn color="success">
+      <v-btn class="info-btn" color="success">
         <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
           >お問い合わせ(関係者用)</a
         >
@@ -140,6 +140,9 @@
   }
   #anotherForm {
     padding: 32px 0 16px 0;
+  }
+  .info-btn {
+    margin: 16px 0;
   }
 }
 </style>
