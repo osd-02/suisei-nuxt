@@ -189,6 +189,9 @@ export default {
         })
         .then(ref => {
           console.log('Add ID: ', ref.id)
+          this.completeMessage = 'お問い合わせを送信しました！';
+          this.resetForm();
+          this.isSubmit  = true;
         })
     },
     resetForm() {
