@@ -189,9 +189,10 @@ export default {
         })
         .then(ref => {
           console.log('Add ID: ', ref.id)
-          this.completeMessage = 'お問い合わせを送信しました！';
+          this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
           this.resetForm();
           this.isSubmit  = true;
+          alert(`${this.completeMessage}`)
         })
     },
     resetForm() {
