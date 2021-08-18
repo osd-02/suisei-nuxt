@@ -60,8 +60,9 @@ function formatDate (object) { //取り置きの項目追加関数
   }
 };
 
-const items = []
+let items = []
 function addLiveName (object) {
+  items = []
   for (const property in object) {
     if (object[property].reserve == true) {
       items.push(object[property].title)

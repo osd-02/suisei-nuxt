@@ -180,6 +180,7 @@ export default {
     onSubmit() {
       const db = firebase.firestore()
       let dbReserve = db.collection("reserve").doc("res").collection(`${this.live}`)
+      console.log('let db')
       dbReserve
         .add({
           liveName: this.live,
