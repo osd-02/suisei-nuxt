@@ -108,9 +108,14 @@
       <div id="anotherForm">
         <b>その他のお問い合わせ</b>
       </div>
-      <v-btn color="success">
-        <a href="mailto:sakanaq0223@gmail.com?subject=suisei お問い合わせ"
-          >お問い合わせ</a
+      <v-btn class="info-btn" color="success">
+        <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
+          >お問い合わせ(一般用)</a
+        >
+      </v-btn>
+      <v-btn class="info-btn" color="success">
+        <a href="mailto:suiseida4@gmail.com?subject=suisei お問い合わせ"
+          >お問い合わせ(関係者用)</a
         >
       </v-btn>
     </v-sheet>
@@ -135,6 +140,9 @@
   }
   #anotherForm {
     padding: 32px 0 16px 0;
+  }
+  .info-btn {
+    margin: 16px 0;
   }
 }
 </style>
@@ -181,6 +189,10 @@ export default {
         })
         .then(ref => {
           console.log('Add ID: ', ref.id)
+          this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
+          this.resetForm();
+          this.isSubmit  = true;
+          alert(`${this.completeMessage}`)
         })
     },
     resetForm() {
