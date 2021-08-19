@@ -179,20 +179,18 @@ export default {
   methods: {
     onSubmit() {
       const db = firebase.firestore()
-      let dbReserve = db.collection("reserve").doc("res").collection(`${this.live}`)
-      console.log('let db')
-      dbReserve.add({
+      let dbReserve = db.collection("reserve").doc("res").collection(`${this.live}`).add({
         liveName: this.live,
         name: this.name,
         email: this.email,
         ticket: this.ticket,
-        }).then(ref => {
-          console.log('Add ID: ', ref.id)
-          this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
-          this.resetForm();
-          this.isSubmit  = true;
-          alert(`${this.completeMessage}`)
-        })
+      }).then(ref => {
+        console.log('Add ID: ', ref.id)
+        this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
+        this.resetForm();
+        this.isSubmit  = true;
+        alert(`${this.completeMessage}`)
+      })
       console.log('end add')
     },
     resetForm() {
