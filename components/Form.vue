@@ -180,12 +180,15 @@ export default {
     async onSubmit() {
       const db = firebase.firestore()
       console.log('start add')
-      let dbReserve = await db.collection("reserve").doc("res").collection(`${this.live}`).add({
+      let dbSet = await db.collection(`${this.live}`)
+      console.log('set db')
+      let res = await dbSet.add({
         liveName: this.live,
         name: this.name,
         email: this.email,
         ticket: this.ticket,
       })
+      console.log('Added document with ID: ', res.id);
       this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
       this.resetForm();
       this.isSubmit  = true;
