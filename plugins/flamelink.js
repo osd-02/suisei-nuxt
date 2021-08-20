@@ -39,7 +39,9 @@ export default ({ app }) => {
         projectId: process.env.FLAMELINK_PROJECT_ID,
         databaseURL: process.env.FLAMELINK_DB_URL,
         storageBucket: process.env.FLAMELINK_STORAGE_BUCKET,
-        messagingSenderId: process.env.FLAMELINK_MESSAGING_SENDER_ID
+        messagingSenderId: process.env.FLAMELINK_MESSAGING_SENDER_ID,
+        appId: process.env.FLAMELINK_APP_ID,
+        measurementId: process.env.FLAMELINK_MEASUREMENT_ID,
       });
     } else {
       firebaseApp = firebase.app();
