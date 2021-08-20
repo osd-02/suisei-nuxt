@@ -151,6 +151,8 @@
 import firebase from "firebase/app"
 // import firebase from '@/plugins/firebase'
 // console.log(app.firebase)
+// const db = firebase.firestore()
+// console.log(db)
 
 export default {
   props: ['data'],
@@ -178,7 +180,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      const db = firebase.firestore()
+      const db = await firebase.firestore()
       console.log(db)
       console.log('start add')
       let dbSet = await db.collection(`${this.live}`)
