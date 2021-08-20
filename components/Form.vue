@@ -198,6 +198,27 @@ export default {
       alert(`${this.completeMessage}`)
       console.log('end add')
     },
+    // async onSubmit({ app }) {
+    //   try {
+    //     await app.flamelink.content.add({
+    //       schemaKey: 'reserve',
+    //       data: {
+    //         liveName: this.live,
+    //         name: this.name,
+    //         email: this.email,
+    //         ticket: this.ticket,
+    //       }
+    //     })
+    //     this.completeMessage = `公演名 : ${this.live} にて取り置きを完了しました！当日はお待ちしています！`;
+    //     this.resetForm();
+    //     this.isSubmit  = true;
+    //     alert(`${this.completeMessage}`)
+    //     console.log('end add')
+    //   } catch (err) {
+    //   console.log(err)
+    //   console.log(app)
+    //   }
+    // },
     resetForm() {
       this.live = ''
       this.name = ''
