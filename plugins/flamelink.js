@@ -16,7 +16,7 @@ export default ({ app }) => {
 
   if (process.server) {
     const admin = require('firebase-admin')
-    if (!admin.apps.length) {
+    // if (!admin.apps.length) {
       firebaseApp = admin.initializeApp({
         credential: admin.credential.cert({
           projectId: process.env.FSA_PROJECT_ID,
@@ -27,11 +27,11 @@ export default ({ app }) => {
         databaseURL: process.env.FLAMELINK_DB_URL,
         storageBucket: process.env.FLAMELINK_STORAGE_BUCKET,
       })
-    } else {
-      firebaseApp = admin.app()
-    }
+    // } else {
+    //   firebaseApp = admin.app()
+    // }
   } else {
-    if (!firebase.apps.length) {
+    // if (!firebase.apps.length) {
       firebaseApp = firebase.initializeApp({
         apiKey: process.env.FLAMELINK_API_KEY,
         authDomain: process.env.FLAMELINK_AUTH_DOMAIN,
@@ -42,9 +42,9 @@ export default ({ app }) => {
         appId: process.env.FLAMELINK_APP_ID,
         measurementId: process.env.FLAMELINK_MEASUREMENT_ID,
       })
-    } else {
-      firebaseApp = firebase.app()
-    }
+    // } else {
+    //   firebaseApp = firebase.app()
+    // }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: 'cf' })
 
