@@ -16,4 +16,7 @@ firebase.initializeApp({
 })
 }
 
+console.log('firebase')
+console.log(firebase.firestore())
+
 export default firebase
