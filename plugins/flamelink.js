@@ -50,5 +50,5 @@ export default ({ app }) => {
 
   console.log('flamelink')
   console.log(firebase.firestore())
-  console.log(firebaseApp)
+  console.log(firebase.apps)
 }
