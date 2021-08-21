@@ -30,7 +30,7 @@ export default ({ app }) => {
   } else {
     firebaseApp = firebase.app();
   }
-  if (process.server) {
+  if (typeof window === "undefined") {
     console.log('server')
     const admin = require("firebase-admin");
     if (!admin.apps.length) {

@@ -36,7 +36,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/dotenv', '@nuxtjs/axios'],
-
+  
   vuetify: {
     theme: {
       light: true,
@@ -59,6 +59,10 @@ export default {
     extend: function (config, { isDev, isClient }) {
       config.node = {
         fs: 'empty',
+        child_process: 'empty',
+        net: 'empty',
+        dns: 'empty',
+        tls: 'empty',
       }
     },
     transpile: ['vee-validate', 'date-utils'],
