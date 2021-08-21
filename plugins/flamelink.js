@@ -49,4 +49,5 @@ export default ({ app }) => {
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
+  console.log(firebase)
 };

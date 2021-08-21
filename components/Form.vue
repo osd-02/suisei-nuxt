@@ -150,11 +150,11 @@
 <script lang="js">
 import firebase from "firebase/app"
 // import firebase from '@/plugins/firebase'
-// console.log(app.firebase)
+console.log(firebase)
 // const db = firebase.firestore()
 // console.log(db)
 
-export default {
+export default  {
   props: ['data'],
   data() {
     return {
