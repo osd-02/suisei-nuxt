@@ -2,6 +2,8 @@ require("dotenv").config();
 import flamelink from "flamelink/app";
 import firebase from "firebase/app";
 require('flamelink/content')
+require("firebase/auth");
+require("firebase/firestore");
 // This example uses RTDB (Realtime Database) - replace with `cf` for Cloud Firestore
 import "flamelink/cf/content";
 import "flamelink/cf/storage";
@@ -11,6 +13,7 @@ import "flamelink/cf/storage";
 
 export default ({ app }) => {
   let firebaseApp;
+  let flApp;
 
   if (process.server) {
     const admin = require("firebase-admin");
@@ -29,8 +32,6 @@ export default ({ app }) => {
       firebaseApp = admin.app();
     }
   } else {
-    require("firebase/auth");
-    require("firebase/firestore");
     
 
     if (!firebase.apps.length) {
@@ -49,5 +50,5 @@ export default ({ app }) => {
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
-  console.log(firebase)
+  flApp = app.flamelink.content;
 };

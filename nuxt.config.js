@@ -22,7 +22,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/flamelink'],
+  plugins: ['@/plugins/flamelink', '@/plugins/firebase'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

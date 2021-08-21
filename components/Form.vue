@@ -148,11 +148,12 @@
 </style>
 
 <script lang="js">
-import firebase from "firebase/app"
-// import firebase from '@/plugins/firebase'
-console.log(firebase)
+// import firebase from "firebase/app"
+// import flamelink from "flamelink/app"
+// import { flApp } from '@/plugins/flamelink'
 // const db = firebase.firestore()
 // console.log(db)
+import firebase from '@/plugins/firebase'
 
 export default  {
   props: ['data'],
@@ -198,8 +199,9 @@ export default  {
       alert(`${this.completeMessage}`)
       console.log('end add')
     },
-    // async onSubmit({ app }) {
+    // async asyncData() {
     //   try {
+    //     console.log(app)
     //     await app.flamelink.content.add({
     //       schemaKey: 'reserve',
     //       data: {

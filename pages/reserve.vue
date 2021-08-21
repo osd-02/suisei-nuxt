@@ -5,7 +5,6 @@
     </div>
     <v-sheet color="main">
       <Form :data="this.items" />
-      <!-- <Contact /> -->
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -45,6 +44,7 @@
 </style>
 
 <script lang="js">
+import firebase from "firebase/app"
 require('date-utils');
 
 function formatDate (object) { //取り置きの項目追加関数
