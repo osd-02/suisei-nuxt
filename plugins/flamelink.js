@@ -13,7 +13,6 @@ import 'flamelink/cf/storage'
 
 export default ({ app }) => {
   let firebaseApp
-  let flApp
 
   if (process.server) {
     const admin = require('firebase-admin')
@@ -51,4 +50,5 @@ export default ({ app }) => {
 
   console.log('flamelink')
   console.log(firebase.firestore())
+  console.log(firebaseApp)
 }
