@@ -49,12 +49,6 @@ export default ({ app }) => {
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
-
-  console.log('flamelink')
-  if (!firebase.apps.length) {
-    console.log('a')
-  } else {
-    console.log('b')
-  }
   console.log(firebase.firestore())
+  console.log(`process.server : ${process.server}`)
 };

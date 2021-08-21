@@ -2,6 +2,9 @@
   "name": "suisei-nuxt",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "15.12.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
