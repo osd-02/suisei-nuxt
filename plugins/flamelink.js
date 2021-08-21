@@ -16,20 +16,6 @@ export default ({ app }) => {
   require('firebase/auth')
   require('firebase/firestore')
 
-  if (!firebase.apps.length) {
-    firebaseApp = firebase.initializeApp({
-      apiKey: process.env.FLAMELINK_API_KEY,
-      authDomain: process.env.FLAMELINK_AUTH_DOMAIN,
-      projectId: process.env.FLAMELINK_PROJECT_ID,
-      databaseURL: process.env.FLAMELINK_DB_URL,
-      storageBucket: process.env.FLAMELINK_STORAGE_BUCKET,
-      messagingSenderId: process.env.FLAMELINK_MESSAGE_SENDER_ID,
-      appId: process.env.FLAMELINK_APP_ID,
-      measurementId: process.env.FLAMELINK_MEASUREMENT_ID,
-    });
-  } else {
-    firebaseApp = firebase.app();
-  }
   if (typeof window === "undefined") {
     console.log('server')
     const admin = require("firebase-admin");
@@ -46,6 +32,21 @@ export default ({ app }) => {
       });
     } else {
       firebaseApp = admin.app();
+    }
+  } else {
+    if (!firebase.apps.length) {
+      firebaseApp = firebase.initializeApp({
+        apiKey: process.env.FLAMELINK_API_KEY,
+        authDomain: process.env.FLAMELINK_AUTH_DOMAIN,
+        projectId: process.env.FLAMELINK_PROJECT_ID,
+        databaseURL: process.env.FLAMELINK_DB_URL,
+        storageBucket: process.env.FLAMELINK_STORAGE_BUCKET,
+        messagingSenderId: process.env.FLAMELINK_MESSAGE_SENDER_ID,
+        appId: process.env.FLAMELINK_APP_ID,
+        measurementId: process.env.FLAMELINK_MEASUREMENT_ID,
+      });
+    } else {
+      firebaseApp = firebase.app();
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
