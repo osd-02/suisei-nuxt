@@ -66,6 +66,7 @@ export default ({ app }) => {
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
+  console.log(process.env.FLAMELINK_API_KEY)
   // console.log(firebase.firestore())
   // console.log(`process.server : ${process.server}`)
 };
