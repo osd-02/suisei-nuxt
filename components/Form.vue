@@ -153,7 +153,7 @@
 // import { flApp } from '@/plugins/flamelink'
 // const db = firebase.firestore()
 // console.log(db)
-import firebase from '@/plugins/firebase'
+import firebase from '@/plugins/flamelink'
 
 export default  {
   props: ['data'],
