@@ -148,12 +148,12 @@
 </style>
 
 <script lang="js">
-// import firebase from "firebase/app"
+import firebase from "firebase/app"
 // import flamelink from "flamelink/app"
 // import { flApp } from '@/plugins/flamelink'
 // const db = firebase.firestore()
 // console.log(db)
-import firebase from '@/plugins/flamelink'
+// import firebase from '@/plugins/flamelink'
 
 export default  {
   props: ['data'],
