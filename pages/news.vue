@@ -60,7 +60,6 @@ export default {
       })
 
       formatDate (data)
-      console.log(data)
       return { newsData }
     } catch (err) {
       console.log(err)
