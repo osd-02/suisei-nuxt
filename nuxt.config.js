@@ -36,7 +36,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/dotenv', '@nuxtjs/axios'],
-
+  
   vuetify: {
     theme: {
       light: true,
@@ -59,10 +59,26 @@ export default {
     extend: function (config, { isDev, isClient }) {
       config.node = {
         fs: 'empty',
+        child_process: 'empty',
+        net: 'empty',
+        dns: 'empty',
+        tls: 'empty',
       }
     },
     transpile: ['vee-validate', 'date-utils'],
   },
 
   plugins: ['@/plugins/flamelink', '@/plugins/vee-validate'],
+
+  env: {
+    APP_ID: process.env.APP_ID,
+    API_KEY: process.env.API_KEY,
+    FLAMELINK_API_KEY: process.env.FLAMELINK_API_KEY,
+    FLAMELINK_AUTH_DOMAIN : process.env.FLAMELINK_AUTH_DOMAIN,
+    FLAMELINK_PROJECT_ID: process.env.FLAMELINK_PROJECT_ID,
+    FLAMELINK_STORAGE_BUCKET: process.env.FLAMELINK_STORAGE_BUCKET,
+    FLAMELINK_MESSAGE_SENDER_ID: process.env.FLAMELINK_MESSAGE_SENDER_ID,
+    FLAMELINK_APP_ID: process.env.FLAMELINK_APP_ID,
+    FLAMELINK_MEASUREMENT_ID: process.env.FLAMELINK_MEASUREMENT_ID,
+  }
 }
