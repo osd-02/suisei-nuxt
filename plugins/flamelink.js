@@ -33,7 +33,6 @@ export default ({ app }) => {
 
   if (typeof window === "undefined") {
     console.log('server')
-    console.log(process.env.FLAMELINK_API_KEY)
     const admin = require("firebase-admin");
     if (!admin.apps.length) {
       firebaseApp = admin.initializeApp({
@@ -47,11 +46,11 @@ export default ({ app }) => {
         storageBucket: process.env.FLAMELINK_STORAGE_BUCKET
       });
       console.log('server initialize')
-      console.log(process.env.FLAMELINK_API_KEY)
+      console.log(firebase.firestore())
     } else {
       firebaseApp = admin.app();
       console.log('server else')
-      console.log(process.env.FLAMELINK_API_KEY)
+      console.log(firebase.firestore())
     }
   } else {
     console.log("criant")
@@ -67,15 +66,14 @@ export default ({ app }) => {
         measurementId: process.env.FLAMELINK_MEASUREMENT_ID,
       });
       console.log('criant initialize')
-      console.log(process.env.FLAMELINK_API_KEY)
+      console.log(firebase.firestore())
     } else {
       firebaseApp = firebase.app();
       console.log('criant else')
-      console.log(process.env.FLAMELINK_API_KEY)
+      console.log(firebase.firestore())
     }
   }
   app.flamelink = flamelink({ firebaseApp, dbType: "cf" });
-  console.log(process.env.FLAMELINK_API_KEY)
   // console.log(firebase.firestore())
   // console.log(`process.server : ${process.server}`)
 };
