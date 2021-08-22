@@ -1,4 +1,6 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 import flamelink from "flamelink/app";
 import firebase from "firebase/app";
 require('flamelink/content')
