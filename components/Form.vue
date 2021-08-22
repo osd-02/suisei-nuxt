@@ -177,7 +177,7 @@ export default  {
   methods: {
     async onSubmit() {
       const db = await firebase.firestore()
-      let dbSet = await db.collection(`${this.live}`)
+      let dbSet = await db.collection('reserve').doc('res').collection(`${this.live}`)
       let res = await dbSet.add({
         liveName: this.live,
         name: this.name,
