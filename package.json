@@ -26,6 +26,7 @@
     "flamelink": "^1.0.0-alpha.34",
     "fs": "^0.0.1-security",
     "http-server": "^14.0.0",
+    "heroku": "^7.59.0",
     "moment": "^2.29.1",
     "nuxt": "^2.15.3",
     "vue-js-modal": "^2.0.1",
