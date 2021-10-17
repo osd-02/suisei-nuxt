@@ -7,9 +7,9 @@
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <div id="logo-wrapper">
-        <a href="/">
+        <NuxtLink to="/">
           <img id="home-logo" src="../assets/img/home-logo.gif" />
-        </a>
+        </NuxtLink>
       </div>
     </v-sheet>
   </div>
