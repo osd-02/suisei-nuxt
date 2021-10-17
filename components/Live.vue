@@ -39,11 +39,6 @@ export default {
   },
   created() {
     this.lives = this.$store.getters.live;
-    for (let i in this.lives) {
-      if (this.lives[i]["id"] === this.articleid) {
-        this.article = this.lives[i];
-      }
-    }
   }
 }
 </script>

@@ -55,11 +55,6 @@ export default {
   },
   created() {
     this.discogs = this.$store.getters.discog
-    for (let i in this.discogs) {
-      if (this.discogs[i]['id'] === this.articleid) {
-        this.article = this.discogs[i]
-      }
-    }
   },
 }
 </script>

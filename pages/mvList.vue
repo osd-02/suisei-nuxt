@@ -78,11 +78,6 @@ export default {
   },
   created() {
     this.mvs = this.$store.getters.mv;
-    for (let i in this.mvs) {
-      if (this.mvs[i]["id"] === this.articleid) {
-        this.article = this.mvs[i];
-      }
-    }
   }
 }
 </script>

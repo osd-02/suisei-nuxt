@@ -39,11 +39,6 @@ export default {
   },
   created() {
     this.newses = this.$store.getters.news
-    for (let i in this.newses) {
-      if (this.newses[i]['id'] === this.articleid) {
-        this.article = this.newses[i]
-      }
-    }
   },
 }
 </script>
