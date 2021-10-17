@@ -16,11 +16,11 @@
               <img class="icon" :src="drawerItem.img" />
             </a>
           </v-list-item-icon>
-          <a :href="drawerItem.link">
+          <NuxtLink :to="`${drawerItem.link}`">
             <v-list-item-title class="item-text">
               {{ drawerItem.title }}
             </v-list-item-title>
-          </a>
+          </NuxtLink>
         </v-list-item>
       </v-list>
 
