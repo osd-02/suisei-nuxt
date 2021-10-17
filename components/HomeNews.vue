@@ -16,6 +16,14 @@
 <script lang="js">
 export default {
   props: ['data'],
+  data() {
+    return {
+      newPosts: null,
+    };
+  },
+  created() {
+    this.newPosts = this.$store.getters.newPosts;
+  }
 }
 </script>
 

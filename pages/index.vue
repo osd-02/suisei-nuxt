@@ -5,7 +5,7 @@
     </div>
     <v-sheet color="main">
       <HomeNews :data="this.homeNewsData" id="home-news-location" />
-      <LatestMv :data="this.latestMvData" id="latest-mv-location" />
+      <LatestMv id="latest-mv-location" />
       <Twitter />
     </v-sheet>
     <div id="footer-space" />
@@ -53,13 +53,6 @@ function formatDate (object) {
     };
   }
 };
-function chooseMvData (object) {
-  for (const property in object) {
-    if (object[property].order == 0) {
-      latestMvData = object[property]
-    };
-  }
-};
 
 export default {
   async asyncData({ app }) {
@@ -86,9 +79,8 @@ export default {
       formatDate(newsDataOrigin)
       formatDate(discogDataOrigin)
       formatDate(mvDataOrigin)
-      chooseMvData(mvDataOrigin)
 
-      return { homeNewsData, latestMvData }
+      return { homeNewsData }
     } catch (err) {
       console.log(err)
       return { homeNewsData: [] }
