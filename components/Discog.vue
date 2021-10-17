@@ -2,40 +2,25 @@
   <div>
     <v-card
       v-for="discog in discogs"
-      v-bind:key="discog.index"
+      v-bind:key="discog.order"
       color="sub"
-      class="card"
-      outlined
+      
+      class="m-5 border-none rounded-xl overflow-hidden"
       :to="`/discog/${discog.id}`"
     >
       <div class="data-wrapper">
         <v-sheet class="data-title-wrapper" color="success">
-          <v-card-title
-            class="discog-title white--text"
-            v-html="discog.title"
-          />
+          <v-card-text class="white--text pb-0"> 投稿日 : {{ discog.date }} </v-card-text>
+          <v-card-title class="pt-2 white--text" v-html="discog.title" />
         </v-sheet>
-        <v-card-text>
-          投稿日 : {{ discog.date }}
-        </v-card-text>
         <div
           class="img-wrapper"
-          if="discog.img"
+          if=discog.img
           v-for="img in discog.img"
           v-bind:key="img.index"
         >
           <img :src="img.image[0].url" />
         </div>
-        <v-card-text>
-          リリース日 : {{ discog.formatedReleaseDate }}
-        </v-card-text>
-        <v-card-text v-if="discog.price">
-          価格 : ￥{{ discog.price }}
-        </v-card-text>
-        <v-card-text v-else>
-          配信リリースのみ
-        </v-card-text>
-        <v-card-text v-html="`${discog.body}`" />
       </div>
     </v-card>
   </div>
