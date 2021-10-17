@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      v-for="live in data"
+      v-for="live in lives"
       v-bind:key="live.order"
       color="sub"
       class="card"
@@ -11,7 +11,7 @@
         <v-sheet class="data-title-wrapper" color="success">
           <v-card-title class="live-title white--text" v-html="live.title" />
         </v-sheet>
-        <v-card-text> 投稿日 : {{ live.formatedPostDate }} </v-card-text>
+        <v-card-text> 投稿日 : {{ live.date }} </v-card-text>
         <div
           class="img-wrapper"
           if="live.img"
@@ -47,7 +47,24 @@
 
 <script lang="js">
 export default {
-  props: ['data'],
+  head() {
+    return {
+      title: "live"
+    };
+  },
+  data() {
+    return {
+      lives: null,
+    };
+  },
+  created() {
+    this.lives = this.$store.getters.live;
+    for (let i in this.lives) {
+      if (this.lives[i]["id"] === this.articleid) {
+        this.article = this.lives[i];
+      }
+    }
+  }
 }
 </script>
 

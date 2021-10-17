@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      v-for="discog in data"
+      v-for="discog in discogs"
       v-bind:key="discog.index"
       color="sub"
       class="card"
@@ -15,7 +15,7 @@
           />
         </v-sheet>
         <v-card-text>
-          投稿日 : {{ discog.formatedPostDate }}
+          投稿日 : {{ discog.date }}
         </v-card-text>
         <div
           class="img-wrapper"
@@ -43,13 +43,24 @@
 <script>
 import moment from 'moment'
 export default {
-  props: ['data'],
-
-  computed: {
-    date: function () {
-      return moment(this.data.discogDate).format('YYYY-MM-DDThh:mm')
-    },
+  head() {
+    return {
+      title: "discog"
+    };
   },
+  data() {
+    return {
+      discogs: null,
+    };
+  },
+  created() {
+    this.discogs = this.$store.getters.discog;
+    for (let i in this.discogs) {
+      if (this.discogs[i]["id"] === this.articleid) {
+        this.article = this.discogs[i];
+      }
+    }
+  }
 }
 </script>
 

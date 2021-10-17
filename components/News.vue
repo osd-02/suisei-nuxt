@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      v-for="news in data"
+      v-for="news in newses"
       v-bind:key="news.index"
       color="sub"
       class="card"
@@ -11,9 +11,7 @@
         <v-sheet class="data-title-wrapper" color="success">
           <v-card-title class="news-title white--text" v-html="news.title" />
         </v-sheet>
-        <v-card-text>
-          投稿日 : {{ news.formatedPostDate }}
-        </v-card-text>
+        <v-card-text> 投稿日 : {{ news.date }} </v-card-text>
         <div
           class="img-wrapper"
           if="news.img"
@@ -29,14 +27,24 @@
 </template>
 
 <script>
-import moment from 'moment'
 export default {
-  props: ['data'],
-
-  computed: {
-    date: function () {
-      return moment(this.data.newsDate).format('YYYY-MM-DDThh:mm')
-    },
+  head() {
+    return {
+      title: 'news',
+    }
+  },
+  data() {
+    return {
+      newses: null,
+    }
+  },
+  created() {
+    this.newses = this.$store.getters.news
+    for (let i in this.newses) {
+      if (this.newses[i]['id'] === this.articleid) {
+        this.article = this.newses[i]
+      }
+    }
   },
 }
 </script>

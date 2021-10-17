@@ -4,7 +4,7 @@
       <img id="home-logo" src="../assets/img/news.png" />
     </div>
     <v-sheet color="main">
-      <News :data="this.newsData" id="news-location" />
+      <News id="news-location" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -33,38 +33,3 @@
   }
 }
 </style>
-
-<script lang="js">
-require('date-utils');
-
-const newsData = []
-function formatDate (object) {
-  for (const property in object) {
-    newsData[object[property].order] = object[property]
-    object[property].nowDate = new Date()
-    object[property].postDate = new Date(object[property].postDate)
-    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
-      delete object[property]
-    };
-  }
-};
-
-export default {
-  async asyncData({ app }) {
-    try {
-      const data = await app.flamelink.content.get({
-        schemaKey: 'news',
-        populate: true,
-      })
-
-      formatDate (data)
-      return { newsData }
-    } catch (err) {
-      console.log(err)
-      return { data: [] }
-    }
-  },
-}
-</script>

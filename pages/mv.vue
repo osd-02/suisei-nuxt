@@ -4,7 +4,7 @@
       <img id="home-logo" src="../assets/img/mv.png" />
     </div>
     <v-sheet color="main">
-      <v-sheet class="mv" v-for="mv in mvData" v-bind:key="mv.index">
+      <v-sheet class="mv" v-for="mv in mvs" v-bind:key="mv.index">
         <v-sheet color="main">
           <h6>{{ mv.title }}</h6>
         </v-sheet>
@@ -58,38 +58,24 @@
 </style>
 
 <script lang="js">
-require('date-utils');
-
-const mvData = []
-function formatDate (object) {
-  for (const property in object) {
-    mvData[object[property].order] = object[property]
-    object[property].nowDate = new Date()
-    object[property].postDate = new Date(object[property].postDate)
-    object[property].liveDate = new Date(object[property].liveDate)
-    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
-      delete object[property]
-    };
-  }
-};
-
 export default {
-  async asyncData({ app }) {
-    try {
-      const data = await app.flamelink.content.get({
-        schemaKey: 'mv',
-        populate: true,
-      })
-      formatDate(data)
-      return { mvData }
-    } catch (err) {
-      console.log(err)
-      return { data: [] }
-    }
+  head() {
+    return {
+      title: "mv"
+    };
   },
+  data() {
+    return {
+      mvs: null,
+    };
+  },
+  created() {
+    this.mvs = this.$store.getters.mv;
+    for (let i in this.mvs) {
+      if (this.mvs[i]["id"] === this.articleid) {
+        this.article = this.mvs[i];
+      }
+    }
+  }
 }
 </script>

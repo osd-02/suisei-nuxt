@@ -4,7 +4,7 @@
       <img id="home-logo" src="../assets/img/live.png" />
     </div>
     <v-sheet color="main">
-      <Live :data="this.liveData" id="live-location" />
+      <Live id="live-location" />
     </v-sheet>
     <div id="footer-space" />
   </div>
@@ -33,41 +33,3 @@
   }
 }
 </style>
-
-<script lang="js">
-require('date-utils');
-
-const liveData = []
-function formatDate (object) {
-  for (const property in object) {
-    liveData[object[property].order] = object[property]
-    object[property].nowDate = new Date()
-    object[property].postDate = new Date(object[property].postDate)
-    object[property].liveDate = new Date(object[property].liveDate)
-    object[property].formatedPostDate = new Date(object[property].postDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDate = new Date(object[property].liveDate).toFormat("YYYY年MM月DD日")
-    object[property].formatedLiveDateOpen = new Date(object[property].liveDate).toFormat("HH24:MI")
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == true) {
-      delete object[property]
-    };
-  }
-};
-
-export default {
-  async asyncData({ app }) {
-    try {
-      const data = await app.flamelink.content.get({
-        schemaKey: 'live',
-        populate: true,
-      })
-
-      formatDate(data)
-      return { liveData }
-    } catch (err) {
-      console.log(err)
-      return { data: [] }
-    }
-  }
-};
-</script>
