@@ -3,16 +3,23 @@
     <div id="logo-wrapper">
       <img id="home-logo" src="../assets/img/mv.png" />
     </div>
-    <v-sheet color="main">
-      <v-sheet class="mv" v-for="mv in mvs" v-bind:key="mv.index">
-        <v-sheet color="main">
-          <h6>{{ mv.title }}</h6>
+    <v-card
+      v-for="mv in mvs"
+      v-bind:key="mv.order"
+      color="sub"
+      class="m-5 border-none rounded-xl overflow-hidden"
+      :to="`/mv/${mv.id}`"
+    >
+      <div class="data-wrapper">
+        <v-sheet class="data-title-wrapper" color="success">
+          <v-card-text class="white--text pb-0"> 投稿日 : {{ mv.date }} </v-card-text>
+          <v-card-title class="pt-2 white--text" v-html="mv.title" />
         </v-sheet>
         <div class="mv-wrapper">
           <v-sheet color="main" class="mv" v-html="mv.videoLink" />
         </div>
-      </v-sheet>
-    </v-sheet>
+      </div>
+    </v-card>
     <div id="footer-space" />
   </div>
 </template>
