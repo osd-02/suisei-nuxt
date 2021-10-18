@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="container">
     <v-card
       color="sub"
-      class="card"
+      class="card border-none rounded-xl overflow-hidden"
       outlined
     >
       <div class="data-wrapper">
@@ -31,6 +31,7 @@
         <v-card-text v-html="`${discog.body}`" />
       </div>
     </v-card>
+  <div id="footer-space" />
   </div>
 </template>
 <script>
@@ -57,3 +58,17 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.container {
+  min-height: calc(100vh - 56px);
+  width: 90%;
+  max-width: 600px;
+  padding: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  #footer-space {
+    height: 40px;
+  }
+}
+</style>

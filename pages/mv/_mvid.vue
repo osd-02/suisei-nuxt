@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <v-sheet color="main">
       <v-sheet class="mv">
         <v-sheet color="main">
@@ -9,6 +10,8 @@
         </div>
       </v-sheet>
     </v-sheet>
+    <div id="footer-space" />
+  </div>
 </template>
 
 <script>
@@ -37,6 +40,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  min-height: calc(100vh - 56px);
+  width: 90%;
+  max-width: 600px;
+  padding: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  #footer-space {
+    height: 40px;
+  }
+}
 .wrapper {
   max-width: 600px;
   margin: auto;
