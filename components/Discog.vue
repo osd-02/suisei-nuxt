@@ -5,7 +5,7 @@
       v-bind:key="discog.order"
       color="sub"
       
-      class="m-5 border-none rounded-xl overflow-hidden"
+      class="mt-4 mb-4 border-none rounded-xl overflow-hidden"
       :to="`/discog/${discog.id}`"
     >
       <div class="data-wrapper">
@@ -39,7 +39,7 @@ export default {
     }
   },
   created() {
-    this.discogs = this.$store.getters.discog
+    this.discogs = this.$store.getters.discog;
   },
 }
 </script>
