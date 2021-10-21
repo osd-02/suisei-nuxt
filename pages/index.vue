@@ -4,7 +4,7 @@
       <img id="home-logo" src="../assets/img/home.png" />
     </div>
     <v-sheet color="main">
-      <HomeNews :data="this.homeNewsData" id="home-news-location" />
+      <HomeNews id="home-news-location" />
       <LatestMv id="latest-mv-location" />
       <Twitter />
     </v-sheet>
@@ -35,56 +35,3 @@
   }
 }
 </style>
-
-<script lang="js">
-require('date-utils');
-
-let latestMvData = []
-let homeNewsData = [[],[]]
-function formatDate (object) {
-  for (const property in object) {
-    object[property].nowDate = new Date()
-    object[property].baseDate = new Date().remove({"months": 1})
-    object[property].postDate = new Date(object[property].postDate)
-
-    if (Date.compare(object[property].postDate, object[property].nowDate) == 1 || Date.compare(object[property].postDate, object[property].baseDate) == 1) {
-      homeNewsData[1].push(object[property]._fl_meta_.schema)
-      homeNewsData[0].push(object[property].title)
-    };
-  }
-};
-
-export default {
-  async asyncData({ app }) {
-    try {
-      const liveDataOrigin = await app.flamelink.content.get({
-        schemaKey: 'live',
-        populate: true,
-      })
-      const newsDataOrigin = await app.flamelink.content.get({
-        schemaKey: 'news',
-        populate: true,
-      })
-      const discogDataOrigin = await app.flamelink.content.get({
-        schemaKey: 'discog',
-        populate: true,
-      })
-      const mvDataOrigin = await app.flamelink.content.get({
-        schemaKey: 'mv',
-        populate: true,
-      })
-
-      homeNewsData = [[],[]]
-      formatDate(liveDataOrigin)
-      formatDate(newsDataOrigin)
-      formatDate(discogDataOrigin)
-      formatDate(mvDataOrigin)
-
-      return { homeNewsData }
-    } catch (err) {
-      console.log(err)
-      return { homeNewsData: [] }
-    }
-  }
-};
-</script>

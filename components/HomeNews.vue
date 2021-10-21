@@ -1,7 +1,7 @@
 <template>
   <v-sheet color="main">
     <img id="logo" src="../assets/img/update.png" />
-    <v-btn
+    <!-- <v-btn
       class="btn"
       v-for="(title, index) in data[0]"
       color="sub"
@@ -9,13 +9,13 @@
       :href="`/${data[1][index]}`"
     >
       {{ data[1][index] }} : {{ title }}
-    </v-btn>
+    </v-btn> -->
     <v-card
       v-for="newPost in newPosts"
       v-bind:key="newPost.order"
       color="sub"
       class="m-5 border-none rounded-xl overflow-hidden"
-      :to="`/newPost/${newPost.id}`"
+       :to="`/live/${live.id}`"
     >
       <div class="data-wrapper">
         <v-sheet class="data-title-wrapper" color="success">
@@ -32,7 +32,6 @@
 
 <script lang="js">
 export default {
-  props: ['data'],
   data() {
     return {
       newPosts: null,
