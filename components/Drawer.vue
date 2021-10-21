@@ -16,11 +16,11 @@
               <img class="icon" :src="drawerItem.img" />
             </a>
           </v-list-item-icon>
-          <a :href="drawerItem.link">
+          <NuxtLink :to="`${drawerItem.link}`">
             <v-list-item-title class="item-text">
               {{ drawerItem.title }}
             </v-list-item-title>
-          </a>
+          </NuxtLink>
         </v-list-item>
       </v-list>
 
@@ -55,25 +55,25 @@ export default {
           title: 'Live',
           id: 3,
           img: require('../static/mercury.png'),
-          link: '/live',
+          link: '/liveList',
         },
         {
           title: 'Discography',
           id: 4,
           img: require('../static/earth.png'),
-          link: '/discog',
+          link: '/discogList',
         },
         {
           title: 'Music Video',
           id: 5,
           img: require('../static/neptune.png'),
-          link: '/mv',
+          link: '/mvList',
         },
         {
           title: 'News',
           id: 6,
           img: require('../static/saturn.png'),
-          link: '/news',
+          link: '/newsList',
         },
         {
           title: 'BASE(Goods)',

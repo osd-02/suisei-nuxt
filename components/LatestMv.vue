@@ -3,7 +3,7 @@
     <img id="logo" src="../assets/img/latest-mv.png" />
     <v-sheet class="mv">
       <div class="mv-wrapper">
-        <v-sheet color="main" class="mv" v-html="data.videoLink" />
+        <v-sheet color="main" class="mv" v-html="mvs[0].videoLink" />
       </div>
     </v-sheet>
   </v-sheet>
@@ -31,6 +31,13 @@
 
 <script lang="js">
 export default {
-  props: ['data'],
+  data() {
+    return {
+      mvs: null,
+    };
+  },
+  created() {
+    this.mvs = this.$store.getters.mv;
+  }
 }
 </script>
