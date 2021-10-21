@@ -13,9 +13,9 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-html {
-  font-family: 'M PLUS 1p', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+<style lang="scss">
+* {
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", 'M PLUS 1p', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
 }
 </style>
 

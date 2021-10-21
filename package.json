@@ -10,7 +10,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "webserver": "http-server ./dist -o -p 8888"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -24,6 +25,7 @@
     "firebase-tools": "^9.16.5",
     "flamelink": "^1.0.0-alpha.34",
     "fs": "^0.0.1-security",
+    "http-server": "^14.0.0",
     "moment": "^2.29.1",
     "nuxt": "^2.15.3",
     "vue-js-modal": "^2.0.1",

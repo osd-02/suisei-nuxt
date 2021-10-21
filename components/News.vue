@@ -4,7 +4,7 @@
       v-for="news in newses"
       v-bind:key="news.order"
       color="sub"
-      class="m-5 border-none rounded-xl overflow-hidden"
+      class="mt-4 mb-4 border-none rounded-xl overflow-hidden"
       :to="`/news/${news.id}`"
     >
       <div class="data-wrapper">

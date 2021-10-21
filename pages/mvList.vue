@@ -7,7 +7,7 @@
       v-for="mv in mvs"
       v-bind:key="mv.order"
       color="sub"
-      class="m-5 border-none rounded-xl overflow-hidden"
+      class="mt-4 mb-4 border-none rounded-xl overflow-hidden"
       :to="`/mv/${mv.id}`"
     >
       <div class="data-wrapper">

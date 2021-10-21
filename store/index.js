@@ -91,12 +91,11 @@ export const actions = {
 
     function sortNews(db) {
       let filtereddb = {}
-      db.map((k, v) => {
-        if (v.newsFilter == true) {
-          filtereddb[k] = v
+      db.map((k) => {
+        if (k.newsFilter == true) {
+          filtereddb = Object.assign(filtereddb, k)
         }
       })
-
       return filtereddb
     }
 
@@ -109,7 +108,9 @@ export const actions = {
 
       returndb = Object.assign(sortedLive, sortedDiscog, sortedMv, sortedNews)
 
-      return returndb
+      let returnArray = [returndb]
+
+      return returnArray
     }
 
     const livedb = formatPosts(getLive)
@@ -119,39 +120,8 @@ export const actions = {
 
     const newPostsdb = chooseNews(livedb, discogdb, mvdb, newsdb)
 
-    // 初期データの公開前記事を削除
-    // let livedb = { ...formattedLive }
-    // for (const id in livedb) {
-    //   if (livedb[id].delete == true) {
-    //     delete livedb[id]
-    //   };
-    // }
-    // let discogdb = { ...formattedDiscog }
-    // for (const id in discogdb) {
-    //   if (discogdb[id].delete == true) {
-    //     delete discogdb[id]
-    //   };
-    // }
-    // let mvdb = { ...formattedMv }
-    // for (const id in mvdb) {
-    //   if (mvdb[id].delete == true) {
-    //     delete mvdb[id]
-    //   };
-    // }
-    // let newsdb = { ...formattedNews }
-    // for (const id in newsdb) {
-    //   if (newsdb[id].delete == true) {
-    //     delete newsdb[id]
-    //   };
-    // }
-
-    // news欄に使用するデータのフィルター
-    // let newpostdb = { ...db }
-    // for (const id in newsdb) {
-    //   if (newsdb[id].newsFilter == true) {
-    //     delete newsdb[id]
-    //   };
-    // }
+    console.log(newPostsdb)
+    console.log(newsdb)
 
     const myprofile = getProfile
     commit('FETCH_POST_LIVE', livedb)
@@ -159,6 +129,6 @@ export const actions = {
     commit('FETCH_POST_MV', mvdb)
     commit('FETCH_POST_NEWS', newsdb)
     commit('FETCH_POST_NEWPOSTS', newPostsdb)
-    // commit("FETCH_POST_PROFILE", myprofile.body);
+    commit("FETCH_POST_PROFILE", myprofile);
   },
 }
