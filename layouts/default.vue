@@ -4,8 +4,8 @@
       <v-main>
         <Header />
         <v-sheet color="main">
-          <Loading v-show="loading" />
-          <Nuxt v-show="!loading" />
+          <!-- <Loading v-show="loading" /> -->
+          <Nuxt />
         </v-sheet>
         <Footer />
       </v-main>
@@ -23,13 +23,13 @@
 
 <script>
 export default {
-  data() {
-    return {
-      loading: true,
-    }
-  },
-  mounted() {
-    this.loading = false
-  },
+  // data() {
+  //   return {
+  //     loading: true,
+  //   }
+  // },
+  // mounted() {
+  //   this.loading = false
+  // },
 }
 </script>
